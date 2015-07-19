@@ -52,7 +52,7 @@ public class GrphBinaryReader extends AbstractGraphReader
 		DataInputStream dis = new DataInputStream(is);
 
 		String classname = dis.readUTF();
-		System.out.println(classname);
+//		System.out.println(classname);
 		Class<Grph> graphClass = (Class<Grph>) Clazz.findClass(classname);
 		Grph graph = Clazz.makeInstance(graphClass);
 		boolean hasProperties = dis.readBoolean();
@@ -106,7 +106,7 @@ public class GrphBinaryReader extends AbstractGraphReader
 		for (int i = dis.readInt(); i > 0; --i)
 		{
 			String name = dis.readUTF();
-			System.out.println(name);
+//			System.out.println(name);
 			Property p = graph.findPropertyByName(name);
 			p.fromGrphBinary(dis);
 		}
