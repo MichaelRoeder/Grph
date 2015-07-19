@@ -3734,10 +3734,14 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * @return a shortest path from source to destination, or null if no path
 	 *         can be found.
 	 */
-	public SearchResultWrappedPath getShortestPath(int source, int destination, NumericalProperty edgeWeights)
-	{
-		return new SearchResultWrappedPath(search(source, edgeWeights), source, destination);
-	}
+    public SearchResultWrappedPath getShortestPath(int source, int destination, NumericalProperty edgeWeights) {
+        SearchResult result = search(source, edgeWeights);
+        if (result.distances[destination] < 0) {
+            return null;
+        } else {
+            return new SearchResultWrappedPath(result, source, destination);
+        }
+    }
 
 	public Path getShortestPath(int source, int destination)
 	{
