@@ -2333,7 +2333,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * Computes a clone of this graph.
 	 */
 	@Override
-	public final Grph clone()
+	public Grph clone()
 	{
 		Grph clone = Clazz.makeInstance(getClass());
 

@@ -29,6 +29,7 @@
 package grph.in_memory;
 
 import toools.set.DefaultIntSet;
+import toools.set.IntSet;
 
 /**
  * @author lhogie
@@ -78,6 +79,14 @@ public final class GraphElementSet extends DefaultIntSet
 	public void clear()
 	{
 		throw new UnsupportedOperationException();
+	}
+	
+	@Override
+	public GraphElementSet clone() {
+		GraphElementSet clone = new GraphElementSet();
+		clone.addAll(this);
+		clone.lowestElementAvailable = lowestElementAvailable;
+		return clone;
 	}
 
 }

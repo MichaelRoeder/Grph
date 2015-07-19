@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>grph</groupId>
 	<artifactId>grph</artifactId>
-	<version>1.5.29</version>
+	<version>1.5.29-MR</version>
 	<name>The high performance graph library for Java</name>
 
 	<repositories>
