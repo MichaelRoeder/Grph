@@ -2,6 +2,7 @@ package grph.in_memory;
 
 import grph.properties.ObjectProperty;
 import toools.NotYetImplementedException;
+import toools.collections.AutoGrowingArrayList;
 import toools.set.IntSet;
 
 public class IncidenceList implements Cloneable {
@@ -70,9 +71,18 @@ public class IncidenceList implements Cloneable {
 		@Override
 		protected Object clone() {
 			IncidenceListProperty clone = new IncidenceListProperty();
-			this.cloneValuesTo(clone);
+			clone.objects = new AutoGrowingArrayList<GrphInternalSet>(this.objects.size());
+			GrphInternalSet cloneSet;
+			for (GrphInternalSet set : this.objects) {
+				if (set != null) {
+					cloneSet = new GrphInternalSet();
+					cloneSet.addAll(set);
+					clone.objects.add(cloneSet);
+				} else {
+					clone.objects.add(null);
+				}
+			}
 			return clone;
 		}
-
 	}
 }

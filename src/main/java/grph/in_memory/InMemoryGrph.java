@@ -713,6 +713,9 @@ public class InMemoryGrph extends Grph {
 	 */
 	@Override
 	public boolean isDirectedSimpleEdge(int edge) {
+		if(!getEdges().contains(edge)) {
+			System.out.println("STOP!");
+		}
 		assert edgeSet.contains(edge) : "edge not in graph " + edge;
 		return isSimpleEdge(edge) && simple_edge_directivity.getValue(edge) == 1;
 	}

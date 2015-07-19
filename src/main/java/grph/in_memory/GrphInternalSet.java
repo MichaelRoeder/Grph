@@ -31,22 +31,20 @@ package grph.in_memory;
 import toools.set.SelfAdaptiveIntSet;
 import toools.set.UnmodifiableIntSet;
 
-public class GrphInternalSet extends SelfAdaptiveIntSet
-{
-	public GrphInternalSet()
-	{
+public class GrphInternalSet extends SelfAdaptiveIntSet {
+	
+	public GrphInternalSet() {
 		super(0);
 	}
 
-	public UnmodifiableIntSet makeReadOnly()
-	{
+	public UnmodifiableIntSet makeReadOnly() {
 		return new UnmodifiableIntSet(this);
 	}
 
 	@Override
-	public void add(int n)
-	{
+	public void add(int n) {
 		assert n >= 0 : n;
 		super.add(n);
 	}
+
 }

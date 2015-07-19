@@ -39,7 +39,7 @@ import toools.set.IntSet;
 
 public abstract class ObjectProperty<T> extends Property
 {
-	private AutoGrowingArrayList<T> objects = new AutoGrowingArrayList<T>();
+	protected AutoGrowingArrayList<T> objects = new AutoGrowingArrayList<T>();
 
 	public ObjectProperty(String name)
 	{
