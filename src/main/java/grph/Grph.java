@@ -2384,7 +2384,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 			if (p.getName() != null)
 			{
 				Property cloneProperty = clone.findPropertyByName(p.getName());
-				System.out.println("cloning " + p.getName() + " to " + cloneProperty.getName());
+//				System.out.println("cloning " + p.getName() + " to " + cloneProperty.getName());
 				p.cloneValuesTo(cloneProperty);
 			}
 		}

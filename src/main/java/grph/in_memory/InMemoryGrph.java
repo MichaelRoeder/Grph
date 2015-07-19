@@ -1001,7 +1001,6 @@ public class InMemoryGrph extends Grph {
 		for (Property p : getProperties()) {
 			if (p.getName() != null) {
 				Property cloneProperty = clone.findPropertyByName(p.getName());
-				System.out.println("cloning " + p.getName() + " to " + cloneProperty.getName());
 				p.cloneValuesTo(cloneProperty);
 			}
 		}
