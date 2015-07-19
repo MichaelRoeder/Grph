@@ -56,34 +56,34 @@ import com.carrotsearch.hppc.IntArrayList;
  */
 public class InMemoryGrph extends Grph
 {
-	private final GraphElementSet vertexSet;
-	private final GraphElementSet edgeSet;
+	protected GraphElementSet vertexSet;
+	protected GraphElementSet edgeSet;
 
-	private final IncidenceList v_out_only;
-	private final IncidenceList v_in_only;
-	private final IncidenceList v_in_out_only;
+	protected IncidenceList v_out_only;
+	protected IncidenceList v_in_only;
+	protected IncidenceList v_in_out_only;
 
-	private final NumericalProperty simple_edge_directivity;
+	protected NumericalProperty simple_edge_directivity;
 
-	private final IntArrayList se_a;
-	private final IntArrayList se_b;
+	protected IntArrayList se_a;
+	protected IntArrayList se_b;
 
-	private final IncidenceList undirectedHyperEdgeVertices;
-	private final IncidenceList directedHyperEdgeTail;
-	private final IncidenceList directedHyperEdgeHead;
+	protected IncidenceList undirectedHyperEdgeVertices;
+	protected IncidenceList directedHyperEdgeTail;
+	protected IncidenceList directedHyperEdgeHead;
 
-	private int numberOfUndirectedSimpleEdges = 0;
-	private int numberOfDirectedSimpleEdges = 0;
-	private int numberOfUndirectedHyperEdges = 0;
-	private int numberOfDirectedHyperEdges = 0;
+	protected int numberOfUndirectedSimpleEdges = 0;
+	protected int numberOfDirectedSimpleEdges = 0;
+	protected int numberOfUndirectedHyperEdges = 0;
+	protected int numberOfDirectedHyperEdges = 0;
 
 	// private transient final NeighboursCache outNeighborsCache = new
 	// OutNeighboursCache(this);
 
-	private final boolean storeEdges;
-	private final DIRECTION navigation;
+	protected final boolean storeEdges;
+	protected final DIRECTION navigation;
 
-	private final String gid;
+	protected final String gid;
 
 	public InMemoryGrph()
 	{

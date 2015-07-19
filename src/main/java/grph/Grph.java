@@ -257,17 +257,17 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	public static final Set<String> HOSTS = new HashSet<String>();
 
 	// Properties
-	private Property verticesLabel;
-	private Property edgesLabel;
+	protected Property verticesLabel;
+	protected Property edgesLabel;
 
-	private NumericalProperty verticesColor;
-	private NumericalProperty edgesColor;
-	private NumericalProperty edgesWidth;
-	private NumericalProperty verticesSize;
-	private NumericalProperty verticesShape;
-	private NumericalProperty edgesStyle;
-	private final List<TopologyListener> listeners = new ArrayList<TopologyListener>();
-	private Collection<Property> properties = null;
+	protected NumericalProperty verticesColor;
+	protected NumericalProperty edgesColor;
+	protected NumericalProperty edgesWidth;
+	protected NumericalProperty verticesSize;
+	protected NumericalProperty verticesShape;
+	protected NumericalProperty edgesStyle;
+	protected final List<TopologyListener> listeners = new ArrayList<TopologyListener>();
+	protected Collection<Property> properties = null;
 
 	// Algorithms
 	private Collection<GrphAlgorithm> algos;
@@ -1112,8 +1112,8 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 		highlight(subgraph, consumeHighlightColor());
 	}
 
-	private ColorPalette palette = new VGA16Palette();
-	private int highlighColorIndex = 0;
+	protected ColorPalette palette = new VGA16Palette();
+	protected int highlighColorIndex = 0;
 
 	private int consumeHighlightColor()
 	{
