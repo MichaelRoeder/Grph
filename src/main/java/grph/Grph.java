@@ -232,8 +232,7 @@ import com.kitfox.svg.app.beans.SVGIcon;
  * A full-featured graph object, exhibiting all available operations and
  * algorithms.
  */
-public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
-{
+public abstract class Grph implements GrphPrimitives, Cloneable, Serializable {
 	// ****************************************************************************
 	// ATTRIBUTES
 	// ****************************************************************************
@@ -242,12 +241,10 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	private static final long serialVersionUID = 1L;
 	public static Logger logger = new GrphLogger();
 
-	static
-	{
+	static {
 		setCompilationDirectory();
 
-		if (GrphWebNotifications.enabled)
-		{
+		if (GrphWebNotifications.enabled) {
 			NetUtilities.notifyUsage("http://www.i3s.unice.fr/~hogie/grph/use.php");
 			GrphWebNotifications.checkForNewVersion(logger);
 		}
@@ -272,63 +269,106 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	// Algorithms
 	private Collection<GrphAlgorithm> algos;
 
-	public transient final GrphAlgorithm<Integer> centerAlgorithm = new MinimumEccentricityGraphCenter().cacheResultForGraph(this);
+	public transient final GrphAlgorithm<Integer> centerAlgorithm = new MinimumEccentricityGraphCenter()
+			.cacheResultForGraph(this);
 	public transient final AllClusteringCoefficientsAlgorithm allClusteringCoefficientsAlgorithm = new AllClusteringCoefficientsAlgorithm();
-	public transient final GrphAlgorithm<Double> avgClusteringCoefficientAlgorithm = new AvgClusteringCoefficientAlgorithm().cacheResultForGraph(this);
-	public transient final GrphAlgorithm<DistanceMatrix> unweightedDistanceMatrixAlgorithm = new UnweightedDistanceMatrixAlgorithm().cacheResultForGraph(this);
+	public transient final GrphAlgorithm<Double> avgClusteringCoefficientAlgorithm = new AvgClusteringCoefficientAlgorithm()
+			.cacheResultForGraph(this);
+	public transient final GrphAlgorithm<DistanceMatrix> unweightedDistanceMatrixAlgorithm = new UnweightedDistanceMatrixAlgorithm()
+			.cacheResultForGraph(this);
 	public transient final GrphAlgorithm<PredecessorMatrix> unweightedPredecessorMatrixAlgorithm = new UnweightedPredecessorMatrixAlgorithm()
 			.cacheResultForGraph(this);
-	public transient final GrphAlgorithmCache<Double> densityAlgorithm = new DensityAlgorithm().cacheResultForGraph(this);
-	public transient final GrphAlgorithmCache<Double> avgDegreeAlgorithm = new AverageDegreeAlgorithm().cacheResultForGraph(this);
-	public transient final GrphAlgorithmCache<Integer> diameterAlgorithm = new DistanceMatrixBasedDiameterAlgorithm().cacheResultForGraph(this);
+	public transient final GrphAlgorithmCache<Double> densityAlgorithm = new DensityAlgorithm()
+			.cacheResultForGraph(this);
+	public transient final GrphAlgorithmCache<Double> avgDegreeAlgorithm = new AverageDegreeAlgorithm()
+			.cacheResultForGraph(this);
+	public transient final GrphAlgorithmCache<Integer> diameterAlgorithm = new DistanceMatrixBasedDiameterAlgorithm()
+			.cacheResultForGraph(this);
 	public transient final GrphAlgorithm<SearchResult[]> bfsAlgorithm = new BFSAlgorithm().cacheResultForGraph(this);
-	public transient final GrphAlgorithmCache<Integer> radiusAlgorithm = new RadiusAlgorithm().cacheResultForGraph(this);
-	public transient final GrphAlgorithmCache<Integer> maxInEdgeDegreeAlgorithm = new MaxInEdgeDegreeAlgorithm().cacheResultForGraph(this);
-	public transient final GrphAlgorithmCache<Integer> maxInVertexDegreeAlgorithm = new MaxInVertexDegreeAlgorithm().cacheResultForGraph(this);
-	public transient final GrphAlgorithmCache<Integer> maxOutEdgeDegreeAlgorithm = new MaxOutEdgeDegreeAlgorithm().cacheResultForGraph(this);
-	public transient final GrphAlgorithmCache<Integer> maxOutVertexDegreeAlgorithm = new MaxOutVertexDegreeAlgorithm().cacheResultForGraph(this);
-	public transient final GrphAlgorithmCache<Integer> minInEdgeDegreeAlgorithm = new MinInEdgeDegreeAlgorithm().cacheResultForGraph(this);
-	public transient final GrphAlgorithmCache<Integer> minInVertexDegreeAlgorithm = new MinInVertexDegreeAlgorithm().cacheResultForGraph(this);
-	public transient final GrphAlgorithmCache<Integer> minOutEdgeDegreeAlgorithm = new MinOutEdgeDegreeAlgorithm().cacheResultForGraph(this);
-	public transient final GrphAlgorithmCache<Integer> minOutVertexDegreeAlgorithm = new MinOutVertexDegreeAlgorithm().cacheResultForGraph(this);
+	public transient final GrphAlgorithmCache<Integer> radiusAlgorithm = new RadiusAlgorithm()
+			.cacheResultForGraph(this);
+	public transient final GrphAlgorithmCache<Integer> maxInEdgeDegreeAlgorithm = new MaxInEdgeDegreeAlgorithm()
+			.cacheResultForGraph(this);
+	public transient final GrphAlgorithmCache<Integer> maxInVertexDegreeAlgorithm = new MaxInVertexDegreeAlgorithm()
+			.cacheResultForGraph(this);
+	public transient final GrphAlgorithmCache<Integer> maxOutEdgeDegreeAlgorithm = new MaxOutEdgeDegreeAlgorithm()
+			.cacheResultForGraph(this);
+	public transient final GrphAlgorithmCache<Integer> maxOutVertexDegreeAlgorithm = new MaxOutVertexDegreeAlgorithm()
+			.cacheResultForGraph(this);
+	public transient final GrphAlgorithmCache<Integer> minInEdgeDegreeAlgorithm = new MinInEdgeDegreeAlgorithm()
+			.cacheResultForGraph(this);
+	public transient final GrphAlgorithmCache<Integer> minInVertexDegreeAlgorithm = new MinInVertexDegreeAlgorithm()
+			.cacheResultForGraph(this);
+	public transient final GrphAlgorithmCache<Integer> minOutEdgeDegreeAlgorithm = new MinOutEdgeDegreeAlgorithm()
+			.cacheResultForGraph(this);
+	public transient final GrphAlgorithmCache<Integer> minOutVertexDegreeAlgorithm = new MinOutVertexDegreeAlgorithm()
+			.cacheResultForGraph(this);
 
-	public transient final GrphAlgorithmCache<Boolean> completenessAlgorithm = new CompletenessAlgorithm().cacheResultForGraph(this);
-	public transient final GrphAlgorithmCache<Boolean> connectednessAlgorithm = new ConnectednessAlgorithm().cacheResultForGraph(this);
+	public transient final GrphAlgorithmCache<Boolean> completenessAlgorithm = new CompletenessAlgorithm()
+			.cacheResultForGraph(this);
+	public transient final GrphAlgorithmCache<Boolean> connectednessAlgorithm = new ConnectednessAlgorithm()
+			.cacheResultForGraph(this);
 
-	public transient final GrphAlgorithmCache<MultigraphnessResult> multigraphnessAlgorithm = new MultigraphnessAlgorithm().cacheResultForGraph(this);
-	public transient final GrphAlgorithmCache<Boolean> reflexivityAlgorithm = new ReflexivityAlgorithm().cacheResultForGraph(this);
-	public transient final GrphAlgorithmCache<Boolean> regularityAlgorithm = new RegularityAlgorithm().cacheResultForGraph(this);
-	public transient final GrphAlgorithmCache<Boolean> simplenessAlgorithm = new SimplenessAlgorithm().cacheResultForGraph(this);
-	public transient final GrphAlgorithmCache<Boolean> treenessAlgorithm = new TreenessAlgorithm().cacheResultForGraph(this);
-	public transient final GrphAlgorithmCache<int[]> vertexListAlgorithm = new VertexListAlgorithm().cacheResultForGraph(this);
-	public transient final GrphAlgorithmCache<Grph> complementAlgorithm = new ComplementAlgorithm().cacheResultForGraph(this);
+	public transient final GrphAlgorithmCache<MultigraphnessResult> multigraphnessAlgorithm = new MultigraphnessAlgorithm()
+			.cacheResultForGraph(this);
+	public transient final GrphAlgorithmCache<Boolean> reflexivityAlgorithm = new ReflexivityAlgorithm()
+			.cacheResultForGraph(this);
+	public transient final GrphAlgorithmCache<Boolean> regularityAlgorithm = new RegularityAlgorithm()
+			.cacheResultForGraph(this);
+	public transient final GrphAlgorithmCache<Boolean> simplenessAlgorithm = new SimplenessAlgorithm()
+			.cacheResultForGraph(this);
+	public transient final GrphAlgorithmCache<Boolean> treenessAlgorithm = new TreenessAlgorithm()
+			.cacheResultForGraph(this);
+	public transient final GrphAlgorithmCache<int[]> vertexListAlgorithm = new VertexListAlgorithm()
+			.cacheResultForGraph(this);
+	public transient final GrphAlgorithmCache<Grph> complementAlgorithm = new ComplementAlgorithm()
+			.cacheResultForGraph(this);
 
-	public transient final GrphAlgorithmCache<int[][]> outNeighborsAlgorithm = new VertexAdjacencyAlgorithm.Out().cacheResultForGraph(this);
-	public transient final GrphAlgorithmCache<int[][]> inNeighborsAlgorithm = new VertexAdjacencyAlgorithm.In().cacheResultForGraph(this);
-	public transient final GrphAlgorithmCache<int[][]> inOutNeighborsAlgorithm = new VertexAdjacencyAlgorithm.InOut().cacheResultForGraph(this);
+	public transient final GrphAlgorithmCache<int[][]> outNeighborsAlgorithm = new VertexAdjacencyAlgorithm.Out()
+			.cacheResultForGraph(this);
+	public transient final GrphAlgorithmCache<int[][]> inNeighborsAlgorithm = new VertexAdjacencyAlgorithm.In()
+			.cacheResultForGraph(this);
+	public transient final GrphAlgorithmCache<int[][]> inOutNeighborsAlgorithm = new VertexAdjacencyAlgorithm.InOut()
+			.cacheResultForGraph(this);
 	public transient final GrphAlgorithmCache<IntSet[]> vertexAdjacenciesAsIDSetsAlgorithm = new OutVertexAdjacencyAsIDSetsAlgorithm()
 			.cacheResultForGraph(this);
 
 	public transient final GrphAlgorithmCache<Grph> lineGraphAlg = new LineGraphAlgorithm().cacheResultForGraph(this);
-	public transient final GrphAlgorithmCache<Result> trianglesAlgorithm = new MatthieuLatapyTriangleAlgorithm().cacheResultForGraph(this);
-	public transient final GrphAlgorithmCache<IntSet> isolatedVerticesAlgorithm = new IsolatedVerticesAlgorithm().cacheResultForGraph(this);
-	public transient final GrphAlgorithmCache<AdjacencyMatrix> adjacencyMatrixAlgo = new AdjacencyMatrixAlgorithm().cacheResultForGraph(this);
-	public transient final GrphAlgorithmCache<IntMatrix> incidenceMatrixAlgo = new IncidenceMatrixAlgorithm().cacheResultForGraph(this);
-	public transient final GrphAlgorithmCache<IntSet> inacessibleVertices = new InacessibleVerticesAlgorithm().cacheResultForGraph(this);
-	public transient final GrphAlgorithmCache<Collection<IntSet>> connectedComponentsAlg = new ConnectedComponentsAlgorithm().cacheResultForGraph(this);
-	public transient final GrphAlgorithmCache<Boolean> irreflexiveAlgorithm = new IrreflexiveAlgorithm().cacheResultForGraph(this);
-	public transient final GrphAlgorithmCache<IntArrayList> topologicalSortingAlg = new TopologicalSortingAlgorithm().cacheResultForGraph(this);
-	public transient final GrphAlgorithmCache<Boolean> isCyclicAlgorithm = new IsCyclicAlgorithm().cacheResultForGraph(this);
+	public transient final GrphAlgorithmCache<Result> trianglesAlgorithm = new MatthieuLatapyTriangleAlgorithm()
+			.cacheResultForGraph(this);
+	public transient final GrphAlgorithmCache<IntSet> isolatedVerticesAlgorithm = new IsolatedVerticesAlgorithm()
+			.cacheResultForGraph(this);
+	public transient final GrphAlgorithmCache<AdjacencyMatrix> adjacencyMatrixAlgo = new AdjacencyMatrixAlgorithm()
+			.cacheResultForGraph(this);
+	public transient final GrphAlgorithmCache<IntMatrix> incidenceMatrixAlgo = new IncidenceMatrixAlgorithm()
+			.cacheResultForGraph(this);
+	public transient final GrphAlgorithmCache<IntSet> inacessibleVertices = new InacessibleVerticesAlgorithm()
+			.cacheResultForGraph(this);
+	public transient final GrphAlgorithmCache<Collection<IntSet>> connectedComponentsAlg = new ConnectedComponentsAlgorithm()
+			.cacheResultForGraph(this);
+	public transient final GrphAlgorithmCache<Boolean> irreflexiveAlgorithm = new IrreflexiveAlgorithm()
+			.cacheResultForGraph(this);
+	public transient final GrphAlgorithmCache<IntArrayList> topologicalSortingAlg = new TopologicalSortingAlgorithm()
+			.cacheResultForGraph(this);
+	public transient final GrphAlgorithmCache<Boolean> isCyclicAlgorithm = new IsCyclicAlgorithm()
+			.cacheResultForGraph(this);
 	public transient final GrphAlgorithmCache<IntSet> girthAlgorithm = new GirthAlgorithm().cacheResultForGraph(this);
-	public transient final GrphAlgorithmCache<Integer> twoSweepDiameterAlg = new TwoSweepBFSDiameterApproximationAlgorithm().cacheResultForGraph(this);
-	public transient final GrphAlgorithmCache<GraphColoring> bipartiteAlgorithm = new BipartitenessAlgorithm().cacheResultForGraph(this);
-	public transient final GrphAlgorithmCache<IntSet> LPMaxMatchingAlgorithm = new LPBasedMaximumMatchingAlgorithm().cacheResultForGraph(this);
-	public transient final GrphAlgorithm<IntSet> LPMinVertexCoverAlgorithm = new LPBasedMinimumVertexCoverAlgorithm().cacheResultForGraph(this);
-	public transient final GrphAlgorithm<IntSet> bruteForceMinimumVertexCoverAlgorithm = new BruteForceMinimumVertexCoverAlgorithm().cacheResultForGraph(this);
-	public transient final GrphAlgorithm<IntSet> branchingMinimumVertexCoverAlgorithm = new BranchingMinimumVertexCoverAlgorithm().cacheResultForGraph(this);
+	public transient final GrphAlgorithmCache<Integer> twoSweepDiameterAlg = new TwoSweepBFSDiameterApproximationAlgorithm()
+			.cacheResultForGraph(this);
+	public transient final GrphAlgorithmCache<GraphColoring> bipartiteAlgorithm = new BipartitenessAlgorithm()
+			.cacheResultForGraph(this);
+	public transient final GrphAlgorithmCache<IntSet> LPMaxMatchingAlgorithm = new LPBasedMaximumMatchingAlgorithm()
+			.cacheResultForGraph(this);
+	public transient final GrphAlgorithm<IntSet> LPMinVertexCoverAlgorithm = new LPBasedMinimumVertexCoverAlgorithm()
+			.cacheResultForGraph(this);
+	public transient final GrphAlgorithm<IntSet> bruteForceMinimumVertexCoverAlgorithm = new BruteForceMinimumVertexCoverAlgorithm()
+			.cacheResultForGraph(this);
+	public transient final GrphAlgorithm<IntSet> branchingMinimumVertexCoverAlgorithm = new BranchingMinimumVertexCoverAlgorithm()
+			.cacheResultForGraph(this);
 	public transient final GrphAlgorithm<IntSet> NiedermeierMinimumVertexCoverAlgorithm = new NiedermeierMinimumVertexCoverAlgorithm()
 			.cacheResultForGraph(this);
-	public transient final GrphAlgorithm<IntSet> LPMaximumindependentSetAlgorithm = new LPBasedMaximumIndependentSetAlgorithm().cacheResultForGraph(this);
+	public transient final GrphAlgorithm<IntSet> LPMaximumindependentSetAlgorithm = new LPBasedMaximumIndependentSetAlgorithm()
+			.cacheResultForGraph(this);
 	public transient final GrphAlgorithm<IntSet> FominGrandoniKratschMaximumindependentSetAlgorithm = new FominGrandoniKratschMaximumindependentSetAlgorithm()
 			.cacheResultForGraph(this);
 	public final GrphAlgorithm<Collection<IntSet>> tarjanSCC = new Tarjan().cacheResultForGraph(this);
@@ -340,20 +380,16 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	// CONSTRUCTORS
 	// ****************************************************************************
 
-	private static void setCompilationDirectory()
-	{
-		COMPILATION_DIRECTORY = Directory.getHomeDirectory().getChildDirectory(".grph").getChildDirectory("native_programs");
+	private static void setCompilationDirectory() {
+		COMPILATION_DIRECTORY = Directory.getHomeDirectory().getChildDirectory(".grph")
+				.getChildDirectory("native_programs");
 
-		if (OperatingSystem.getLocalOS() instanceof Unix)
-		{
+		if (OperatingSystem.getLocalOS() instanceof Unix) {
 			Directory global = new Directory("/usr/local/grph/extern");
 
-			if (global.exists() && global.canWrite())
-			{
+			if (global.exists() && global.canWrite()) {
 				COMPILATION_DIRECTORY = global;
-			}
-			else
-			{
+			} else {
 				/*
 				 * System.out .println("Warning! Directory " + global.getPath()
 				 * +
@@ -363,14 +399,12 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 			}
 		}
 
-		if (!COMPILATION_DIRECTORY.exists())
-		{
+		if (!COMPILATION_DIRECTORY.exists()) {
 			COMPILATION_DIRECTORY.mkdirs();
 		}
 	}
 
-	public Grph(String name)
-	{
+	public Grph(String name) {
 		verticesLabel = new StringProperty(name + ".vertex labels");
 		verticesColor = new NumericalProperty(name + "vertex color", 16, 15);
 		verticesSize = new NumericalProperty(name + "vertex size", 16, 10);
@@ -389,8 +423,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return true if this graph is directed
 	 */
-	public boolean isHypergraph()
-	{
+	public boolean isHypergraph() {
 		return getNumberOfHyperEdges() > 0;
 	}
 
@@ -400,13 +433,11 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return
 	 */
-	public Collection<IntSet> getStronglyConnectedComponents()
-	{
+	public Collection<IntSet> getStronglyConnectedComponents() {
 		return tarjanSCC.compute(this);
 	}
 
-	public boolean isStronglyConnected()
-	{
+	public boolean isStronglyConnected() {
 		return getStronglyConnectedComponents().size() == 1;
 	}
 
@@ -416,22 +447,20 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return true if this graph is mixed
 	 */
-	public boolean isMixed()
-	{
+	public boolean isMixed() {
 		int numberOfEdges = getEdges().size();
 		return getNumberOfDirectedHyperEdges() != numberOfEdges || getNumberOfDirectedSimpleEdges() != numberOfEdges
-				|| getNumberOfUndirectedHyperEdges() != numberOfEdges || getNumberOfUndirectedSimpleEdges() != numberOfEdges;
+				|| getNumberOfUndirectedHyperEdges() != numberOfEdges
+				|| getNumberOfUndirectedSimpleEdges() != numberOfEdges;
 	}
 
 	@Override
-	public String toString()
-	{
+	public String toString() {
 		String s = TextUtilities.toHumanString(getVertices().size()) + " vertices, ";
 
 		s += TextUtilities.toHumanString(getNumberOfEdges());
 
-		if (!storeEdges())
-		{
+		if (!storeEdges()) {
 			s += " implicit";
 		}
 
@@ -444,27 +473,19 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return
 	 */
-	public Collection<Property> getProperties()
-	{
-		if (properties == null)
-		{
+	public Collection<Property> getProperties() {
+		if (properties == null) {
 			properties = new ArrayList<Property>();
 
-			for (Class c = getClass(); c != null; c = c.getSuperclass())
-			{
-				for (Field f : c.getDeclaredFields())
-				{
-					if (Property.class.isAssignableFrom(f.getType()))
-					{
-						try
-						{
+			for (Class c = getClass(); c != null; c = c.getSuperclass()) {
+				for (Field f : c.getDeclaredFields()) {
+					if (Property.class.isAssignableFrom(f.getType())) {
+						try {
 							f.setAccessible(true);
 							Property p = (Property) f.get(this);
 							assert p != null;
 							properties.add(p);
-						}
-						catch (Exception e)
-						{
+						} catch (Exception e) {
 							e.printStackTrace();
 							throw new IllegalStateException();
 						}
@@ -484,35 +505,30 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	// Graph creation
 	// /////////////////////////////////////////////////////////////////////////////
 
-	public static Grph fromGrphText(String text) throws ParseException, GraphBuildException
-	{
+	public static Grph fromGrphText(String text) throws ParseException, GraphBuildException {
 		return new GrphTextReader().readGraph(text.getBytes());
 	}
 
-	public static Grph fromGrphBinary(byte[] text) throws ParseException, GraphBuildException
-	{
+	public static Grph fromGrphBinary(byte[] text) throws ParseException, GraphBuildException {
 		return new GrphBinaryReader().readGraph(text);
 	}
 
-	public static Grph fromGrphTextFile(String filename) throws ParseException, SAXException, GraphBuildException, IOException
-	{
+	public static Grph fromGrphTextFile(String filename) throws ParseException, SAXException, GraphBuildException,
+			IOException {
 		RegularFile f = new RegularFile(filename);
 		return fromGrphText(new String(f.getContent()));
 	}
 
-	public static Grph fromGraphML(String graphMLText) throws ParseException, SAXException
-	{
+	public static Grph fromGraphML(String graphMLText) throws ParseException, SAXException {
 		return fromGraphML(graphMLText, null, null);
 	}
 
-	public static Grph fromGraphML(String graphMLText, Class vPropertyClass, Class ePropertyClass) throws ParseException, SAXException
-	{
-		try
-		{
-			return new GraphMLReader().readGraph(new StringBufferInputStream(graphMLText), vPropertyClass, ePropertyClass);
-		}
-		catch (IOException e)
-		{
+	public static Grph fromGraphML(String graphMLText, Class vPropertyClass, Class ePropertyClass)
+			throws ParseException, SAXException {
+		try {
+			return new GraphMLReader().readGraph(new StringBufferInputStream(graphMLText), vPropertyClass,
+					ePropertyClass);
+		} catch (IOException e) {
 			e.printStackTrace();
 			throw new IllegalStateException();
 		}
@@ -528,8 +544,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * @throws GraphBuildException
 	 * @throws IOException
 	 */
-	public static Grph loadOnlineGrph(String url) throws ParseException, GraphBuildException, IOException
-	{
+	public static Grph loadOnlineGrph(String url) throws ParseException, GraphBuildException, IOException {
 		return new GrphBinaryReader().readGraph(NetUtilities.retrieveURLContent(url));
 	}
 
@@ -539,32 +554,26 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	/**
 	 * Clears the cache for all algorithms that employs one.
 	 */
-	public void clearCache()
-	{
-		for (GrphAlgorithmCache cache : listCachingGraphAlgorithms())
-		{
+	public void clearCache() {
+		for (GrphAlgorithmCache cache : listCachingGraphAlgorithms()) {
 			cache.invalidateCachedValue();
 		}
 	}
 
-	public Cache getCache()
-	{
+	public Cache getCache() {
 		return cache;
 	}
 
-	public PageRank getPageRanking(Random r)
-	{
+	public PageRank getPageRanking(Random r) {
 		PageRank pg = new PageRank(this, r);
 		pg.iterate(1, getNumberOfVertices());
 		return pg;
 	}
 
-	private long getTimeSpentComputing()
-	{
+	private long getTimeSpentComputing() {
 		long sum = 0;
 
-		for (GrphAlgorithmCache alg : listCachingGraphAlgorithms())
-		{
+		for (GrphAlgorithmCache alg : listCachingGraphAlgorithms()) {
 			sum += alg.getTimeSpentComputing();
 		}
 
@@ -577,10 +586,10 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * @return the URL where this graph can be retrieved from.
 	 * @throws IOException
 	 */
-	public String postOnTheWeb() throws IOException
-	{
+	public String postOnTheWeb() throws IOException {
 		String basedir = "http://www.i3s.unice.fr/~hogie/grph/instances/";
-		byte[] response = NetUtilities.retrieveURLContent(basedir + "post.php", new HashMap<String, String>(), toGrphBinary());
+		byte[] response = NetUtilities.retrieveURLContent(basedir + "post.php", new HashMap<String, String>(),
+				toGrphBinary());
 		return basedir + new String(response);
 	}
 
@@ -588,8 +597,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	// Graphs
 	// //////////////////////////////////////////////////////////////////////////////
 
-	public Grph getSpanningTree()
-	{
+	public Grph getSpanningTree() {
 		return SpanningTree.computeBFSBasedSpanningTree(this);
 	}
 
@@ -598,17 +606,14 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return the complement graph.
 	 */
-	public Grph getComplement()
-	{
+	public Grph getComplement() {
 		return complementAlgorithm.compute(this);
 	}
 
-	public IntArrayList getAllOutEdgeDegrees()
-	{
+	public IntArrayList getAllOutEdgeDegrees() {
 		IntArrayList outDegrees = new IntArrayList(getVertices().getGreatest() + 1);
 
-		for (IntCursor v : getVertices())
-		{
+		for (IntCursor v : getVertices()) {
 			outDegrees.add(getVertexDegree(v.value, Grph.TYPE.edge, Grph.DIRECTION.out));
 		}
 
@@ -620,8 +625,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return the line graph.
 	 */
-	public Grph getLineGraph()
-	{
+	public Grph getLineGraph() {
 		return lineGraphAlg.compute(this);
 	}
 
@@ -632,17 +636,13 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 *            the number of iterations to perform
 	 * @return the n-th line graph of this graph
 	 */
-	public Grph getLineGraph(int n)
-	{
+	public Grph getLineGraph(int n) {
 		if (n < 0)
 			throw new IllegalArgumentException();
 
-		if (n == 0)
-		{
+		if (n == 0) {
 			return this;
-		}
-		else
-		{
+		} else {
 			return getLineGraph().getLineGraph(n - 1);
 		}
 	}
@@ -653,8 +653,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * @return true, if all edges in this graph are simple edges, false
 	 *         otherwise.
 	 */
-	public boolean isUndirectedSimpleGraph()
-	{
+	public boolean isUndirectedSimpleGraph() {
 		return getNumberOfUndirectedSimpleEdges() == getEdges().size();
 	}
 
@@ -664,8 +663,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * @return true if all edges in this graph are directed edges, false
 	 *         otherwise.
 	 */
-	public boolean isDirectedSimpleGraph()
-	{
+	public boolean isDirectedSimpleGraph() {
 		return getNumberOfDirectedSimpleEdges() == getEdges().size();
 	}
 
@@ -686,8 +684,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 *            another vertex
 	 * @return true if there exist an edge between the two given vertices.
 	 */
-	public boolean areVerticesAdjacent(int src, int dest)
-	{
+	public boolean areVerticesAdjacent(int src, int dest) {
 		return getSomeEdgeConnecting(src, dest) >= 0;
 	}
 
@@ -699,16 +696,12 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 *            an edge
 	 * @return a set of edges
 	 */
-	public IntSet getEdgesAdjacentToEdge(int e)
-	{
+	public IntSet getEdgesAdjacentToEdge(int e) {
 		IntSet s = new DefaultIntSet();
 
-		for (int v : getVerticesIncidentToEdge(e).toIntArray())
-		{
-			for (int en : getEdgesIncidentTo(v).toIntArray())
-			{
-				if (en != e)
-				{
+		for (int v : getVerticesIncidentToEdge(e).toIntArray()) {
+			for (int en : getEdgesIncidentTo(v).toIntArray()) {
+				if (en != e) {
 					s.add(en);
 				}
 			}
@@ -724,86 +717,55 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * @param dest
 	 * @return
 	 */
-	public int getSomeEdgeConnecting(int src, int dest)
-	{
+	public int getSomeEdgeConnecting(int src, int dest) {
 		assert getVertices().contains(src);
 		assert getVertices().contains(dest);
 		IntSet out = getOutEdges(src);
 		IntSet in = getInEdges(dest);
 
-		if (out.isEmpty() || in.isEmpty())
-		{
+		if (out.isEmpty() || in.isEmpty()) {
 			return -1;
-		}
-		else
-		{
-			if (out.size() < in.size())
-			{
-				for (IntCursor c : out)
-				{
+		} else {
+			if (out.size() < in.size()) {
+				for (IntCursor c : out) {
 					int e = c.value;
 
-					if (isDirectedSimpleEdge(e))
-					{
-						if (getDirectedSimpleEdgeHead(e) == dest)
-						{
+					if (isDirectedSimpleEdge(e)) {
+						if (getDirectedSimpleEdgeHead(e) == dest) {
 							return e;
 						}
-					}
-					else if (isUndirectedSimpleEdge(e))
-					{
-						if (getTheOtherVertex(e, src) == dest)
-						{
+					} else if (isUndirectedSimpleEdge(e)) {
+						if (getTheOtherVertex(e, src) == dest) {
 							return e;
 						}
-					}
-					else if (isUndirectedHyperEdge(e))
-					{
-						if (getUndirectedHyperEdgeVertices(e).contains(dest))
-						{
+					} else if (isUndirectedHyperEdge(e)) {
+						if (getUndirectedHyperEdgeVertices(e).contains(dest)) {
 							return e;
 						}
-					}
-					else if (isDirectedHyperEdge(e))
-					{
-						if (getDirectedHyperEdgeHead(e).contains(dest))
-						{
+					} else if (isDirectedHyperEdge(e)) {
+						if (getDirectedHyperEdgeHead(e).contains(dest)) {
 							return e;
 						}
 					}
 				}
-			}
-			else
-			{
-				for (IntCursor c : in)
-				{
+			} else {
+				for (IntCursor c : in) {
 					int e = c.value;
 
-					if (isDirectedSimpleEdge(e))
-					{
-						if (getDirectedSimpleEdgeTail(e) == src)
-						{
+					if (isDirectedSimpleEdge(e)) {
+						if (getDirectedSimpleEdgeTail(e) == src) {
 							return e;
 						}
-					}
-					else if (isUndirectedSimpleEdge(e))
-					{
-						if (getTheOtherVertex(e, dest) == src)
-						{
+					} else if (isUndirectedSimpleEdge(e)) {
+						if (getTheOtherVertex(e, dest) == src) {
 							return e;
 						}
-					}
-					else if (isUndirectedHyperEdge(e))
-					{
-						if (getUndirectedHyperEdgeVertices(e).contains(src))
-						{
+					} else if (isUndirectedHyperEdge(e)) {
+						if (getUndirectedHyperEdgeVertices(e).contains(src)) {
 							return e;
 						}
-					}
-					else if (isDirectedHyperEdge(e))
-					{
-						if (getDirectedHyperEdgeTail(e).contains(src))
-						{
+					} else if (isDirectedHyperEdge(e)) {
+						if (getDirectedHyperEdgeTail(e).contains(src)) {
 							return e;
 						}
 					}
@@ -821,8 +783,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	/**
 	 * @return a table that contains all local clustering coefficients.
 	 */
-	public double[] getLocalClusteringCoefficients()
-	{
+	public double[] getLocalClusteringCoefficients() {
 		return allClusteringCoefficientsAlgorithm.compute(this);
 	}
 
@@ -831,23 +792,19 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return the average clustering coefficient the of this graph.
 	 */
-	public double getAverageClusteringCoefficient()
-	{
+	public double getAverageClusteringCoefficient() {
 		return avgClusteringCoefficientAlgorithm.compute(this);
 	}
 
-	public double getClusteringCoefficient(int v)
-	{
+	public double getClusteringCoefficient(int v) {
 		return ClusteringCoefficient.getLocalClusteringCoefficient(this, v);
 	}
 
-	public double getClusteringCoefficient()
-	{
+	public double getClusteringCoefficient() {
 		return new GlobalClusteringCoefficientAlgorithm().compute(this);
 	}
 
-	public Distribution<Double> getClusteringCoefficientDistribution()
-	{
+	public Distribution<Double> getClusteringCoefficientDistribution() {
 		return ClusteringCoefficient.getClusteringCoefficientDistribution(this);
 	}
 
@@ -860,9 +817,9 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * @param degree
 	 * @return
 	 */
-	public IntSet getVerticesOfDegree(int degree)
-	{
-		return getVertices().filter(new ElementFilter.DegreeFilter(this, degree, Grph.TYPE.edge, Grph.DIRECTION.in_out));
+	public IntSet getVerticesOfDegree(int degree) {
+		return getVertices()
+				.filter(new ElementFilter.DegreeFilter(this, degree, Grph.TYPE.edge, Grph.DIRECTION.in_out));
 	}
 
 	/**
@@ -872,14 +829,11 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * @param minDegree
 	 * @return
 	 */
-	public IntSet getVerticesOfDegreeAtLeast(int minDegree)
-	{
+	public IntSet getVerticesOfDegreeAtLeast(int minDegree) {
 		IntSet r = new DefaultIntSet();
 
-		for (int v : getVertices().toIntArray())
-		{
-			if (getVertexDegree(v, TYPE.edge, DIRECTION.in_out) >= minDegree)
-			{
+		for (int v : getVertices().toIntArray()) {
+			if (getVertexDegree(v, TYPE.edge, DIRECTION.in_out) >= minDegree) {
 				r.add(v);
 			}
 		}
@@ -895,14 +849,11 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * @param degree
 	 * @return
 	 */
-	public IntSet getVerticesOfDegree(int degree, Grph.DIRECTION dir)
-	{
+	public IntSet getVerticesOfDegree(int degree, Grph.DIRECTION dir) {
 		IntSet r = new DefaultIntSet();
 
-		for (int v : getVertices().toIntArray())
-		{
-			if (getVertexDegree(v, TYPE.edge, DIRECTION.in_out) == degree)
-			{
+		for (int v : getVertices().toIntArray()) {
+			if (getVertexDegree(v, TYPE.edge, DIRECTION.in_out) == degree) {
 				r.add(v);
 			}
 		}
@@ -919,19 +870,16 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * @param g
 	 * @return true if this graph contains the given graph, false otherwise
 	 */
-	public boolean contains(Grph g)
-	{
-		if (!getVertices().contains(g.getVertices()) || !getEdges().contains(g.getEdges()))
-		{
+	public boolean contains(Grph g) {
+		if (!getVertices().contains(g.getVertices()) || !getEdges().contains(g.getEdges())) {
 			return false;
 		}
 
-		for (IntCursor c : g.getEdges())
-		{
+		for (IntCursor c : g.getEdges()) {
 			int e = c.value;
 
-			if (getEdgeNature(e) != g.getEdgeNature(e) || !getVerticesIncidentToEdge(e).equals(g.getVerticesIncidentToEdge(e)))
-			{
+			if (getEdgeNature(e) != g.getEdgeNature(e)
+					|| !getVerticesIncidentToEdge(e).equals(g.getVerticesIncidentToEdge(e))) {
 				return false;
 			}
 		}
@@ -948,12 +896,10 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * @return the bipartite subgraph induced by A and B, with edges only
 	 *         between A and B
 	 */
-	public Grph getBipartiteSubgraphInducedByVertices(IntSet A, IntSet B)
-	{
+	public Grph getBipartiteSubgraphInducedByVertices(IntSet A, IntSet B) {
 		Grph g = getSubgraphInducedByVertices(IntSets.union(A, B));
 
-		for (int e : g.getEdges().toIntArray())
-		{
+		for (int e : g.getEdges().toIntArray()) {
 			int u = g.getOneVertex(e);
 			int v = g.getTheOtherVertex(e, u);
 
@@ -971,43 +917,33 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * @param vertices
 	 * @return a new graph
 	 */
-	public Grph getSubgraphInducedByVertices(IntSet vertices)
-	{
+	public Grph getSubgraphInducedByVertices(IntSet vertices) {
 		if (!getVertices().contains(vertices))
 			throw new IllegalArgumentException("some vertices are not in the graph");
 
-		if (getVertices().size() == vertices.size())
-		{
+		if (getVertices().size() == vertices.size()) {
 			return clone();
-		}
-		else
-		{
+		} else {
 			IntSet edges = new DefaultIntSet();
 
-			for (IntCursor vc : vertices)
-			{
+			for (IntCursor vc : vertices) {
 				edges.addAll(getEdgesIncidentTo(vc.value));
 			}
 
 			Grph g = Clazz.makeInstance(getClass());
 			g.addVertices(vertices);
 
-			for (IntCursor ec : edges)
-			{
+			for (IntCursor ec : edges) {
 				int e = ec.value;
 
-				if (isSimpleEdge(e))
-				{
+				if (isSimpleEdge(e)) {
 					int a = getOneVertex(e);
 					int b = getTheOtherVertex(e, a);
 
-					if (vertices.contains(a) && vertices.contains(b))
-					{
+					if (vertices.contains(a) && vertices.contains(b)) {
 						g.addSimpleEdge(a, e, b, isDirectedSimpleEdge(e));
 					}
-				}
-				else
-				{
+				} else {
 					// hyper-edge
 					throw new NotYetImplementedException();
 				}
@@ -1024,31 +960,23 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * @param edges
 	 * @return a new graph
 	 */
-	public Grph getSubgraphInducedByEdges(IntSet edges)
-	{
+	public Grph getSubgraphInducedByEdges(IntSet edges) {
 		if (!getEdges().contains(edges))
 			throw new IllegalArgumentException("some edges are not in the graph");
 
-		if (getEdges().size() == edges.size())
-		{
+		if (getEdges().size() == edges.size()) {
 			return clone();
-		}
-		else
-		{
+		} else {
 			Grph g = Clazz.makeInstance(getClass());
 
-			for (IntCursor ec : edges)
-			{
+			for (IntCursor ec : edges) {
 				int e = ec.value;
 
-				if (isSimpleEdge(e))
-				{
+				if (isSimpleEdge(e)) {
 					int a = getOneVertex(e);
 					int b = getTheOtherVertex(e, a);
 					g.addSimpleEdge(a, e, b, isDirectedSimpleEdge(e));
-				}
-				else
-				{
+				} else {
 					// hyper-edge
 					throw new NotYetImplementedException();
 				}
@@ -1067,16 +995,13 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * @param color
 	 *            the color to assign to vertices
 	 */
-	public void highlightVertices(IntSet vertices, int color)
-	{
-		for (int v : vertices.toIntArray())
-		{
+	public void highlightVertices(IntSet vertices, int color) {
+		for (int v : vertices.toIntArray()) {
 			getVertexColorProperty().setValue(v, color);
 		}
 	}
 
-	public void highlightVertices(int... vertices)
-	{
+	public void highlightVertices(int... vertices) {
 		highlightVertices(IntSets.from(vertices));
 	}
 
@@ -1089,10 +1014,8 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * @param color
 	 *            the color to assign to edges
 	 */
-	public void highlightEdges(IntSet edges, int color)
-	{
-		for (int e : edges.toIntArray())
-		{
+	public void highlightEdges(IntSet edges, int color) {
+		for (int e : edges.toIntArray()) {
 			getEdgeColorProperty().setValue(e, color);
 		}
 	}
@@ -1107,29 +1030,25 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * @param color
 	 *            the color to assign to the graph
 	 */
-	public void highlight(Grph subgraph)
-	{
+	public void highlight(Grph subgraph) {
 		highlight(subgraph, consumeHighlightColor());
 	}
 
 	protected ColorPalette palette = new VGA16Palette();
 	protected int highlighColorIndex = 0;
 
-	private int consumeHighlightColor()
-	{
+	private int consumeHighlightColor() {
 		int c = highlighColorIndex;
 		highlighColorIndex = highlighColorIndex + 1 % palette.getNumberOfColors();
 		return c;
 	}
 
-	public void highlight(Grph subgraph, int color)
-	{
+	public void highlight(Grph subgraph, int color) {
 		highlightVertices(subgraph.getVertices(), color);
 		highlightEdges(subgraph.getEdges(), color);
 	}
 
-	public IntSet getShortestCycle()
-	{
+	public IntSet getShortestCycle() {
 		return girthAlgorithm.compute(this);
 	}
 
@@ -1140,8 +1059,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return the girth of the graph
 	 */
-	public int getGirth()
-	{
+	public int getGirth() {
 		return girthAlgorithm.compute(this).size();
 	}
 
@@ -1152,8 +1070,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * Returns true if this graph is isomorphic to the given graph, false
 	 * otherwise.
 	 */
-	public boolean isIsomorphicTo(Grph anotherGraph)
-	{
+	public boolean isIsomorphicTo(Grph anotherGraph) {
 		return new DreadnautAlgorithm().areIsomorphic(this, anotherGraph);
 	}
 
@@ -1161,8 +1078,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * Returns if the given "pattern graph" is partially isomorphic to a
 	 * subgraph in this graph.
 	 */
-	public Collection<Matching> getPartialSubgraphIsomorphism(Grph pattern, boolean findAllSolutions)
-	{
+	public Collection<Matching> getPartialSubgraphIsomorphism(Grph pattern, boolean findAllSolutions) {
 		return LAD.lad(this, pattern, MODE.PARTIAL, findAllSolutions);
 	}
 
@@ -1170,8 +1086,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * Returns if the given "pattern graph" is isomorphic to a subgraph in this
 	 * graph.
 	 */
-	public Collection<Matching> getInducedSubgraphIsomorphism(Grph pattern, boolean findAllSolutions)
-	{
+	public Collection<Matching> getInducedSubgraphIsomorphism(Grph pattern, boolean findAllSolutions) {
 		return LAD.lad(this, pattern, MODE.INDUCED, findAllSolutions);
 	}
 
@@ -1184,12 +1099,10 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * @param s
 	 * @return
 	 */
-	public boolean isDominatingSet(IntSet s)
-	{
+	public boolean isDominatingSet(IntSet s) {
 		IntSet coveredVertices = new DefaultIntSet();
 
-		for (int v : s.toIntArray())
-		{
+		for (int v : s.toIntArray()) {
 			coveredVertices.add(v);
 			coveredVertices.addAll(this.getNeighbours(v));
 		}
@@ -1203,18 +1116,13 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * @param s
 	 * @return
 	 */
-	public boolean isIndependentSet(IntSet s)
-	{
+	public boolean isIndependentSet(IntSet s) {
 		int[] e = s.toIntArray();
 
-		for (int a : e)
-		{
-			for (int b : e)
-			{
-				if (a != b)
-				{
-					if (areVerticesAdjacent(a, b))
-					{
+		for (int a : e) {
+			for (int b : e) {
+				if (a != b) {
+					if (areVerticesAdjacent(a, b)) {
 						return false;
 					}
 				}
@@ -1230,18 +1138,13 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * @param s
 	 * @return
 	 */
-	public boolean isMatching(IntSet s)
-	{
+	public boolean isMatching(IntSet s) {
 		int[] e = s.toIntArray();
 
-		for (int a : e)
-		{
-			for (int b : e)
-			{
-				if (a != b)
-				{
-					if (areEdgesAdjacent(a, b))
-					{
+		for (int a : e) {
+			for (int b : e) {
+				if (a != b) {
+					if (areEdgesAdjacent(a, b)) {
 						return false;
 					}
 				}
@@ -1257,12 +1160,10 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * @param s
 	 * @return
 	 */
-	public boolean isVertexCover(IntSet s)
-	{
+	public boolean isVertexCover(IntSet s) {
 		IntSet coveredEdges = new DefaultIntSet();
 
-		for (int v : s.toIntArray())
-		{
+		for (int v : s.toIntArray()) {
 			coveredEdges.addAll(getEdgesIncidentTo(v));
 		}
 
@@ -1274,8 +1175,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return the edges set of a maximum matching
 	 */
-	public IntSet getMaximumMatching()
-	{
+	public IntSet getMaximumMatching() {
 		return LPMaxMatchingAlgorithm.compute(this);
 	}
 
@@ -1292,8 +1192,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * good performances.
 	 * </dl>
 	 */
-	public enum MinVertexCoverAlgorithm
-	{
+	public enum MinVertexCoverAlgorithm {
 		BRUTE_FORCE, INTEGER_PROGRAMMING, BRANCHING, NIEDERMEIER
 	}
 
@@ -1304,8 +1203,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return
 	 */
-	public IntSet getMinimumVertexCover()
-	{
+	public IntSet getMinimumVertexCover() {
 		return getMinimumVertexCover(MinVertexCoverAlgorithm.INTEGER_PROGRAMMING);
 	}
 
@@ -1314,10 +1212,8 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return
 	 */
-	public IntSet getMinimumVertexCover(MinVertexCoverAlgorithm algorithm)
-	{
-		switch (algorithm)
-		{
+	public IntSet getMinimumVertexCover(MinVertexCoverAlgorithm algorithm) {
+		switch (algorithm) {
 		case BRUTE_FORCE:
 			return bruteForceMinimumVertexCoverAlgorithm.compute(this);
 		case INTEGER_PROGRAMMING:
@@ -1339,8 +1235,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * algorithm, with good performances (and a time complexity of O*(1.227^n)).
 	 * </dl>
 	 */
-	public enum MaxIndependentSetAlgorithm
-	{
+	public enum MaxIndependentSetAlgorithm {
 		INTEGER_PROGRAMMING, FOMIN_GRANDONI_KRATSCH
 	}
 
@@ -1349,15 +1244,12 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return
 	 */
-	public IntSet getMaximumIndependentSet()
-	{
+	public IntSet getMaximumIndependentSet() {
 		return getMaximumIndependentSet(MaxIndependentSetAlgorithm.FOMIN_GRANDONI_KRATSCH);
 	}
 
-	public IntSet getMaximumIndependentSet(MaxIndependentSetAlgorithm algorithm)
-	{
-		switch (algorithm)
-		{
+	public IntSet getMaximumIndependentSet(MaxIndependentSetAlgorithm algorithm) {
+		switch (algorithm) {
 		case INTEGER_PROGRAMMING:
 			return LPMaximumindependentSetAlgorithm.compute(this);
 		case FOMIN_GRANDONI_KRATSCH:
@@ -1371,29 +1263,20 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return the number of triangles.
 	 */
-	public int getNumberOfTriangles()
-	{
+	public int getNumberOfTriangles() {
 		return trianglesAlgorithm.compute(this).numberOfTriangles;
 	}
 
-	private final Collection<GrphAlgorithm> listGraphAlgorithms()
-	{
-		if (algos == null)
-		{
+	private final Collection<GrphAlgorithm> listGraphAlgorithms() {
+		if (algos == null) {
 			algos = new HashSet<GrphAlgorithm>();
 
-			for (Class c = getClass(); c != null; c = c.getSuperclass())
-			{
-				for (Field f : c.getDeclaredFields())
-				{
-					if (GrphAlgorithm.class.isAssignableFrom(f.getType()))
-					{
-						try
-						{
+			for (Class c = getClass(); c != null; c = c.getSuperclass()) {
+				for (Field f : c.getDeclaredFields()) {
+					if (GrphAlgorithm.class.isAssignableFrom(f.getType())) {
+						try {
 							algos.add((GrphAlgorithm) f.get(this));
-						}
-						catch (Throwable e)
-						{
+						} catch (Throwable e) {
 							e.printStackTrace();
 							throw new IllegalStateException(e);
 						}
@@ -1405,8 +1288,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 		return algos;
 	}
 
-	private final Collection<? extends GrphAlgorithm> listGraphAlgorithms(Class c)
-	{
+	private final <T> Collection<? extends T> listGraphAlgorithms(Class<T> c) {
 		Filter f = new Filter.FilterObjectByClass(c);
 		return Collections.filter(new ArrayList<GrphAlgorithm>(listGraphAlgorithms()), f);
 	}
@@ -1416,32 +1298,24 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return all caching algorithms
 	 */
-	public final Collection<GrphAlgorithmCache> listCachingGraphAlgorithms()
-	{
+	public final Collection<GrphAlgorithmCache> listCachingGraphAlgorithms() {
 		return (Collection<GrphAlgorithmCache>) listGraphAlgorithms(GrphAlgorithmCache.class);
 	}
 
-	private final Collection<TopologyGenerator> listTopologyGenerators()
-	{
+	private final Collection<TopologyGenerator> listTopologyGenerators() {
 		return (Collection<TopologyGenerator>) listGraphAlgorithms(TopologyGenerator.class);
 	}
 
-	public GrphAlgorithm findAlgorithm(String name)
-	{
-		for (GrphAlgorithm algo : listGraphAlgorithms())
-		{
-			if (algo.getClass() == GrphAlgorithmCache.class)
-			{
+	public GrphAlgorithm findAlgorithm(String name) {
+		for (GrphAlgorithm algo : listGraphAlgorithms()) {
+			if (algo.getClass() == GrphAlgorithmCache.class) {
 				GrphAlgorithmCache cache = (GrphAlgorithmCache) algo;
 				algo = cache.getCachedAlgorithm();
 
-				if (algo.getClass().getName().equals(name))
-				{
+				if (algo.getClass().getName().equals(name)) {
 					return cache;
 				}
-			}
-			else if (algo.getClass().getName().equals(name))
-			{
+			} else if (algo.getClass().getName().equals(name)) {
 				return algo;
 			}
 		}
@@ -1456,8 +1330,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * @param k
 	 *            the number of neighbours to connect to.
 	 */
-	public void connectToKClosestNeighbors(int k)
-	{
+	public void connectToKClosestNeighbors(int k) {
 		KClosestNeighborsTopologyGenerator tg = new KClosestNeighborsTopologyGenerator();
 		tg.setK(k);
 		tg.compute(this);
@@ -1469,8 +1342,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * @param width
 	 * @param height
 	 */
-	public void grid(int width, int height)
-	{
+	public void grid(int width, int height) {
 		grid(width, height, false, false, false);
 	}
 
@@ -1481,8 +1353,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * @param width
 	 * @param height
 	 */
-	public void dgrid(int width, int height)
-	{
+	public void dgrid(int width, int height) {
 		grid(width, height, true, false, false);
 	}
 
@@ -1496,8 +1367,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * @param createDiagonal
 	 *            indicates whether diagonals edges should be created or not
 	 */
-	public void grid(int width, int height, boolean directed, boolean createDiagonal, boolean secondaryDiagonal)
-	{
+	public void grid(int width, int height, boolean directed, boolean createDiagonal, boolean secondaryDiagonal) {
 		GridTopologyGenerator tg = new GridTopologyGenerator();
 		tg.setWidth(width);
 		tg.setHeight(height);
@@ -1520,8 +1390,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 *            whether edges are directed or not
 	 * @return the newly created edge
 	 */
-	public final int addSimpleEdge(int src, int dest, boolean directed)
-	{
+	public final int addSimpleEdge(int src, int dest, boolean directed) {
 		int e = getNextEdgeAvailable();
 		addSimpleEdge(src, e, dest, directed);
 		return e;
@@ -1541,31 +1410,23 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 *            whether edges are directed or not
 	 * @return the newly created edge
 	 */
-	public final void addSimpleEdge(int src, int edge, int dest, boolean directed)
-	{
+	public final void addSimpleEdge(int src, int edge, int dest, boolean directed) {
 		assert src >= 0;
 		assert dest >= 0;
 		assert !getEdges().contains(edge);
 
-		if (directed)
-		{
+		if (directed) {
 			addDirectedSimpleEdge(src, edge, dest);
-		}
-		else
-		{
+		} else {
 			addUndirectedSimpleEdge(edge, src, dest);
 		}
 	}
 
-	private final void disconnect(int source, int edge, int destination)
-	{
-		if (isUndirectedHyperEdge(edge))
-		{
+	private final void disconnect(int source, int edge, int destination) {
+		if (isUndirectedHyperEdge(edge)) {
 			removeFromHyperEdge(edge, source);
 			removeFromHyperEdge(edge, destination);
-		}
-		else
-		{
+		} else {
 			removeEdge(edge);
 		}
 	}
@@ -1579,12 +1440,9 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 *            another set of vertices
 	 * @return true if the two sets form a cut of this graph, false otherwise.
 	 */
-	public boolean isCut(IntSet a, IntSet b)
-	{
-		for (IntCursor v : getVertices())
-		{
-			if (!(a.contains(v.value) ^ b.contains(v.value)))
-			{
+	public boolean isCut(IntSet a, IntSet b) {
+		for (IntCursor v : getVertices()) {
+			if (!(a.contains(v.value) ^ b.contains(v.value))) {
 				return false;
 			}
 		}
@@ -1599,25 +1457,18 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 *            sets of vertices
 	 * @return true if the sets form a cut of this graph, false otherwise.
 	 */
-	public boolean isCut(IntSet... setsOfVertices)
-	{
-		for (IntCursor vc : getVertices())
-		{
+	public boolean isCut(IntSet... setsOfVertices) {
+		for (IntCursor vc : getVertices()) {
 			int v = vc.value;
 			IntSet container = null;
 
-			for (IntSet set : setsOfVertices)
-			{
-				if (set.contains(v))
-				{
+			for (IntSet set : setsOfVertices) {
+				if (set.contains(v)) {
 					// if not set containing this vertex have been previously
 					// found
-					if (container == null)
-					{
+					if (container == null) {
 						container = set;
-					}
-					else
-					{
+					} else {
 						// at least two sets contain this vertex, this is not a
 						// cut
 						return false;
@@ -1626,8 +1477,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 			}
 
 			// no set contain this vertex, this is not a cut
-			if (container == null)
-			{
+			if (container == null) {
 				return false;
 			}
 		}
@@ -1645,16 +1495,14 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * @param p
 	 *            the probability to create a shortcut for any pair
 	 */
-	public void rnws(int k, double p)
-	{
+	public void rnws(int k, double p) {
 		RandomNewmanWattsStrogatzTopologyGenerator tg = new RandomNewmanWattsStrogatzTopologyGenerator();
 		tg.setK(k);
 		tg.setP(p);
 		tg.compute(this);
 	}
 
-	public void rnws(int numberOfVertices, int k, double p)
-	{
+	public void rnws(int numberOfVertices, int k, double p) {
 		ensureNVertices(numberOfVertices);
 		rnws(k, p);
 	}
@@ -1668,28 +1516,23 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 *            another set of vertices
 	 * @return the set of edges describing the cut
 	 */
-	public IntSet getCutEdges(IntSet a, IntSet b)
-	{
+	public IntSet getCutEdges(IntSet a, IntSet b) {
 		if (!isCut(a, b))
 			throw new IllegalArgumentException("sets a and b do not form a cut");
 
 		IntSet cutEdge = new DefaultIntSet();
 
-		for (IntCursor e : getEdges())
-		{
+		for (IntCursor e : getEdges()) {
 			IntSet vertices = getVerticesIncidentToEdge(e.value);
 
-			if (!vertices.isEmpty())
-			{
+			if (!vertices.isEmpty()) {
 				Iterator<IntCursor> i = vertices.iterator();
 				IntSet set = a.contains(i.next().value) ? a : b;
 
-				while (i.hasNext())
-				{
+				while (i.hasNext()) {
 					// if one of the other vertices is not contained in the same
 					// set
-					if (!set.contains(i.next().value))
-					{
+					if (!set.contains(i.next().value)) {
 						cutEdge.add(e.value);
 						break;
 					}
@@ -1709,8 +1552,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 *            another set of vertices
 	 * @return the size of the cut
 	 */
-	public int getCutSize(IntSet a, IntSet b)
-	{
+	public int getCutSize(IntSet a, IntSet b) {
 		return getCutEdges(a, b).size();
 	}
 
@@ -1722,29 +1564,24 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * @param destination
 	 *            another vertex
 	 */
-	public final void disconnect(int src, int destination)
-	{
-		for (IntCursor thisEdge : getEdgesConnecting(src, destination))
-		{
+	public final void disconnect(int src, int destination) {
+		for (IntCursor thisEdge : getEdgesConnecting(src, destination)) {
 			disconnect(src, thisEdge.value, destination);
 		}
 	}
 
-	public void ring(boolean directed)
-	{
+	public void ring(boolean directed) {
 		RingTopologyGenerator.ring(this, directed);
 	}
 
-	public void ring(IntSet vertices, boolean directed)
-	{
+	public void ring(IntSet vertices, boolean directed) {
 		RingTopologyGenerator.ring(this, vertices, directed);
 	}
 
 	/**
 	 * Creates a directed ring consisting of the vertices already in the graph.
 	 */
-	public void dring()
-	{
+	public void dring() {
 		ring(true);
 	}
 
@@ -1752,8 +1589,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * Creates an undirected ring consisting of the vertices already in the
 	 * graph.
 	 */
-	public void ring()
-	{
+	public void ring() {
 		ring(false);
 	}
 
@@ -1764,10 +1600,8 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * @param vertices
 	 *            the vertices to be removed
 	 */
-	public void removeVertices(int... vertices)
-	{
-		for (int v : vertices)
-		{
+	public void removeVertices(int... vertices) {
+		for (int v : vertices) {
 			removeVertex(v);
 		}
 	}
@@ -1779,26 +1613,21 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * @param vertices
 	 *            the set of vertices to be removed
 	 */
-	public void removeEdges(IntSet edges)
-	{
-		for (IntCursor e : edges)
-		{
+	public void removeEdges(IntSet edges) {
+		for (IntCursor e : edges) {
 			removeEdge(e.value);
 		}
 	}
 
-	enum EDGE_NATURE
-	{
+	enum EDGE_NATURE {
 		USE, DSE, DHE, UHE
 	};
 
-	public static enum DIRECTION
-	{
+	public static enum DIRECTION {
 		in, out, in_out
 	}
 
-	public static enum TYPE
-	{
+	public static enum TYPE {
 		edge, vertex
 	}
 
@@ -1808,13 +1637,11 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * @param v
 	 * @return
 	 */
-	public int getEccentricity(int v, NumericalProperty weights)
-	{
+	public int getEccentricity(int v, NumericalProperty weights) {
 		return search(v, weights).maxDistance();
 	}
 
-	public int getEccentricity(int v)
-	{
+	public int getEccentricity(int v) {
 		return getEccentricity(v, null);
 	}
 
@@ -1825,8 +1652,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * @return true if this graph contains the given graph, false, otherwise.
 	 */
 	@Override
-	public boolean equals(Object o)
-	{
+	public boolean equals(Object o) {
 		return o instanceof Grph && equals((Grph) o);
 	}
 
@@ -1836,19 +1662,16 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * @param g
 	 * @return true if this graph contains the given graph.
 	 */
-	public boolean equals(Grph g)
-	{
-		if (!getVertices().equals(g.getVertices()) || !getEdges().equals(g.getEdges()))
-		{
+	public boolean equals(Grph g) {
+		if (!getVertices().equals(g.getVertices()) || !getEdges().equals(g.getEdges())) {
 			return false;
 		}
 
-		for (IntCursor c : g.getEdges())
-		{
+		for (IntCursor c : g.getEdges()) {
 			int e = c.value;
 
-			if (getEdgeNature(e) != g.getEdgeNature(e) || !g.getVerticesIncidentToEdge(e).equals(g.getVerticesIncidentToEdge(e)))
-			{
+			if (getEdgeNature(e) != g.getEdgeNature(e)
+					|| !g.getVerticesIncidentToEdge(e).equals(g.getVerticesIncidentToEdge(e))) {
 				return false;
 			}
 		}
@@ -1863,87 +1686,58 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * @param g
 	 * @return the first difference that is found between the two graphs.
 	 */
-	public final String getDifference(Grph g)
-	{
-		if (getVertices().size() != g.getVertices().size())
-		{
+	public final String getDifference(Grph g) {
+		if (getVertices().size() != g.getVertices().size()) {
 			return "not same number of vertices";
-		}
-		else if (getEdges().size() != g.getEdges().size())
-		{
+		} else if (getEdges().size() != g.getEdges().size()) {
 			return "not same number of edges";
-		}
-		else
-		{
+		} else {
 			// checks if graphs have the same vertices
-			for (IntCursor c : getVertices())
-			{
+			for (IntCursor c : getVertices()) {
 				int v = c.value;
 
-				if (!g.getVertices().contains(v))
-				{
+				if (!g.getVertices().contains(v)) {
 					return "vertex " + v + " not found";
 				}
 			}
 
 			// checks if graphs have the same edges, with same nature
-			for (IntCursor c : getEdges())
-			{
+			for (IntCursor c : getEdges()) {
 				int e = c.value;
 
-				if (!g.getEdges().contains(e))
-				{
+				if (!g.getEdges().contains(e)) {
 					return "edge " + e + " not found";
-				}
-				else if (isDirectedSimpleEdge(e))
-				{
-					if (g.isDirectedSimpleEdge(e))
-					{
-						if (getDirectedSimpleEdgeTail(e) != g.getDirectedSimpleEdgeTail(e))
-						{
-							return "arc " + e + " does not have the same tail (" + getDirectedSimpleEdgeTail(e) + " and " + g.getDirectedSimpleEdgeTail(e)
-									+ ")";
-						}
-						else if (getDirectedSimpleEdgeHead(e) != g.getDirectedSimpleEdgeHead(e))
-						{
+				} else if (isDirectedSimpleEdge(e)) {
+					if (g.isDirectedSimpleEdge(e)) {
+						if (getDirectedSimpleEdgeTail(e) != g.getDirectedSimpleEdgeTail(e)) {
+							return "arc " + e + " does not have the same tail (" + getDirectedSimpleEdgeTail(e)
+									+ " and " + g.getDirectedSimpleEdgeTail(e) + ")";
+						} else if (getDirectedSimpleEdgeHead(e) != g.getDirectedSimpleEdgeHead(e)) {
 							return "arc " + e + " does not have the same head";
 						}
-					}
-					else
-					{
+					} else {
 						return "edge is not an arc";
 					}
-				}
-				else if (isUndirectedSimpleEdge(e))
-				{
-					if (!g.isUndirectedSimpleEdge(e))
-					{
+				} else if (isUndirectedSimpleEdge(e)) {
+					if (!g.isUndirectedSimpleEdge(e)) {
 						return "edge " + e + " is not undirected";
-					}
-					else
-					{
+					} else {
 						int a = getOneVertex(e);
 						int b = getTheOtherVertex(e, a);
 						int ga = getOneVertex(e);
 						int gb = getTheOtherVertex(e, a);
 
-						if (!(a == ga && b == gb || a == b && b == ga))
-						{
-							return "edge " + e + " does not have the same ends: (" + a + ", " + b + ")/(" + ga + ", " + gb + ")";
+						if (!(a == ga && b == gb || a == b && b == ga)) {
+							return "edge " + e + " does not have the same ends: (" + a + ", " + b + ")/(" + ga + ", "
+									+ gb + ")";
 						}
 					}
-				}
-				else if (isUndirectedHyperEdge(e))
-				{
-					if (g.isUndirectedHyperEdge(e))
-					{
-						if (!getUndirectedHyperEdgeVertices(e).equals(g.getUndirectedHyperEdgeVertices(e)))
-						{
+				} else if (isUndirectedHyperEdge(e)) {
+					if (g.isUndirectedHyperEdge(e)) {
+						if (!getUndirectedHyperEdgeVertices(e).equals(g.getUndirectedHyperEdgeVertices(e))) {
 							return "hyper edge does not have the same vertices";
 						}
-					}
-					else
-					{
+					} else {
 						return "edge is not an hyperedge";
 					}
 				}
@@ -1960,32 +1754,21 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * @param e
 	 * @return
 	 */
-	public EDGE_NATURE getEdgeNature(int e)
-	{
-		if (isDirectedSimpleEdge(e))
-		{
+	public EDGE_NATURE getEdgeNature(int e) {
+		if (isDirectedSimpleEdge(e)) {
 			return EDGE_NATURE.DSE;
-		}
-		else if (isUndirectedSimpleEdge(e))
-		{
+		} else if (isUndirectedSimpleEdge(e)) {
 			return EDGE_NATURE.USE;
-		}
-		else if (isUndirectedHyperEdge(e))
-		{
+		} else if (isUndirectedHyperEdge(e)) {
 			return EDGE_NATURE.UHE;
-		}
-		else if (isDirectedHyperEdge(e))
-		{
+		} else if (isDirectedHyperEdge(e)) {
 			return EDGE_NATURE.UHE;
-		}
-		else
-		{
+		} else {
 			throw new IllegalStateException("unknow edge type");
 		}
 	}
 
-	public void undirectionalizeEdge(int e)
-	{
+	public void undirectionalizeEdge(int e) {
 		assert isDirectedSimpleEdge(e);
 		int t = getDirectedSimpleEdgeTail(e);
 		int h = getDirectedSimpleEdgeHead(e);
@@ -1993,8 +1776,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 		addUndirectedSimpleEdge(e, t, h);
 	}
 
-	public void revertEdge(int e)
-	{
+	public void revertEdge(int e) {
 		assert isDirectedSimpleEdge(e);
 		int t = getDirectedSimpleEdgeTail(e);
 		int h = getDirectedSimpleEdgeHead(e);
@@ -2009,8 +1791,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 *            a vertex
 	 * @return a set of edges
 	 */
-	public IntSet getEdgesIncidentTo(int v)
-	{
+	public IntSet getEdgesIncidentTo(int v) {
 		assert storeEdges();
 		assert getVertices().contains(v);
 		return IntSets.union(getInOnlyEdges(v), getOutOnlyEdges(v), getInOutOnlyEdges(v));
@@ -2019,15 +1800,12 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	/**
 	 * Clears this graph. All vertices and edges are removed.
 	 */
-	public void clear()
-	{
-		for (int e : getEdges().toIntArray())
-		{
+	public void clear() {
+		for (int e : getEdges().toIntArray()) {
 			removeEdge(e);
 		}
 
-		for (int v : getVertices().toIntArray())
-		{
+		for (int v : getVertices().toIntArray()) {
 			removeVertex(v);
 		}
 
@@ -2042,8 +1820,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 *            a vertex
 	 * @return a set of edges
 	 */
-	public IntSet getOutEdges(int v)
-	{
+	public IntSet getOutEdges(int v) {
 		assert getVertices().contains(v) : "vertex does not exist: " + v;
 		assert storeEdges();
 		return IntSets.union(getOutOnlyEdges(v), getInOutOnlyEdges(v));
@@ -2057,8 +1834,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 *            a vertex
 	 * @return a set of edges
 	 */
-	public IntSet getInEdges(int v)
-	{
+	public IntSet getInEdges(int v) {
 		assert storeEdges();
 		assert getVertices().contains(v) : "vertex does not exist: " + v;
 		return IntSets.union(getInOnlyEdges(v), getInOutOnlyEdges(v));
@@ -2071,30 +1847,20 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * @param v
 	 * @return
 	 */
-	public IntSet getOutNeighbors(int v)
-	{
+	public IntSet getOutNeighbors(int v) {
 		assert v >= 0 : v;
 
-		if (!storeEdges())
-		{
+		if (!storeEdges()) {
 			return IntSets.union(getOutOnlyElements(v), getInOutOnlyElements(v));
-		}
-		else
-		{
+		} else {
 			IntSet outs = new GrphInternalSet();
 
-			for (int e : getOutEdges(v).toIntArray())
-			{
-				if (isSimpleEdge(e))
-				{
+			for (int e : getOutEdges(v).toIntArray()) {
+				if (isSimpleEdge(e)) {
 					outs.add(getTheOtherVertex(e, v));
-				}
-				else if (isUndirectedHyperEdge(e))
-				{
+				} else if (isUndirectedHyperEdge(e)) {
 					outs.addAll(getUndirectedHyperEdgeVertices(e));
-				}
-				else if (isDirectedHyperEdge(e))
-				{
+				} else if (isDirectedHyperEdge(e)) {
 					outs.addAll(getDirectedHyperEdgeHead(e));
 				}
 			}
@@ -2103,20 +1869,17 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 		}
 	}
 
-	public IntSet getOutOnlyEdges(int v)
-	{
+	public IntSet getOutOnlyEdges(int v) {
 		assert storeEdges();
 		return getOutOnlyElements(v);
 	}
 
-	public IntSet getInOnlyEdges(int v)
-	{
+	public IntSet getInOnlyEdges(int v) {
 		assert storeEdges();
 		return getInOnlyElements(v);
 	}
 
-	public IntSet getInOutOnlyEdges(int v)
-	{
+	public IntSet getInOutOnlyEdges(int v) {
 		assert storeEdges();
 		return getInOutOnlyElements(v);
 	}
@@ -2130,8 +1893,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 *            another vertex
 	 * @return the new edge
 	 */
-	public int addUndirectedSimpleEdge(int v1, int v2)
-	{
+	public int addUndirectedSimpleEdge(int v1, int v2) {
 		assert v1 >= 0;
 		assert v2 >= 0;
 
@@ -2146,34 +1908,25 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return the newly created vertex
 	 */
-	public int addVertex()
-	{
+	public int addVertex() {
 		int v = getNextVertexAvailable();
 		addVertex(v);
 		return v;
 	}
 
-	protected IntSet getInElements(int v)
-	{
+	protected IntSet getInElements(int v) {
 		assert v >= 0 : v;
 
 		IntSet in_only = getInOnlyElements(v);
 		IntSet in_out_only = getInOutOnlyElements(v);
 
-		if (in_only == null && in_out_only == null)
-		{
+		if (in_only == null && in_out_only == null) {
 			return EmptySet.instance;
-		}
-		else if (in_only != null)
-		{
+		} else if (in_only != null) {
 			return in_only;
-		}
-		else if (in_out_only != null)
-		{
+		} else if (in_out_only != null) {
 			return in_out_only;
-		}
-		else
-		{
+		} else {
 			return IntSets.union(in_only, in_out_only);
 		}
 	}
@@ -2185,14 +1938,12 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 *            an edge
 	 * @return true if the given edge is a simple one, false otherwise
 	 */
-	public boolean isSimpleEdge(int edge)
-	{
+	public boolean isSimpleEdge(int edge) {
 		assert getEdges().contains(edge);
 		return !isHyperEdge(edge);
 	}
 
-	public boolean isHyperEdge(int e)
-	{
+	public boolean isHyperEdge(int e) {
 		return isDirectedHyperEdge(e) || isUndirectedHyperEdge(e);
 	}
 
@@ -2202,71 +1953,47 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * @param v
 	 *            the vertex to be isolated
 	 */
-	public void disconnectVertex(int v)
-	{
+	public void disconnectVertex(int v) {
 		assert containsVertex(v) : v;
 
-		if (storeEdges())
-		{
-			for (int e : getEdgesIncidentTo(v).toIntArray())
-			{
-				if (isSimpleEdge(e))
-				{
+		if (storeEdges()) {
+			for (int e : getEdgesIncidentTo(v).toIntArray()) {
+				if (isSimpleEdge(e)) {
 					removeEdge(e);
-				}
-				else if (isUndirectedHyperEdge(e))
-				{
+				} else if (isUndirectedHyperEdge(e)) {
 					removeFromHyperEdge(e, v);
-				}
-				else if (isDirectedSimpleEdge(e))
-				{
+				} else if (isDirectedSimpleEdge(e)) {
 					removeFromDirectedHyperEdgeHead(e, v);
 					removeFromDirectedHyperEdgeTail(e, v);
-				}
-				else
-				{
+				} else {
 					throw new IllegalStateException();
 				}
 			}
-		}
-		else
-		{
-			for (int n : getOutOnlyElements(v).toIntArray())
-			{
+		} else {
+			for (int n : getOutOnlyElements(v).toIntArray()) {
 				removeEdge(v, n);
 			}
 
-			for (int n : getInOutOnlyElements(v).toIntArray())
-			{
+			for (int n : getInOutOnlyElements(v).toIntArray()) {
 				removeEdge(v, n);
 			}
 		}
 	}
 
-	public IntSet getInNeighbours(int v)
-	{
+	public IntSet getInNeighbours(int v) {
 		assert v >= 0 : v;
 
-		if (!storeEdges())
-		{
+		if (!storeEdges()) {
 			return getInElements(v);
-		}
-		else
-		{
+		} else {
 			IntSet ins = new DefaultIntSet();
 
-			for (int e : getInEdges(v).toIntArray())
-			{
-				if (isSimpleEdge(e))
-				{
+			for (int e : getInEdges(v).toIntArray()) {
+				if (isSimpleEdge(e)) {
 					ins.add(getTheOtherVertex(e, v));
-				}
-				else if (isUndirectedHyperEdge(e))
-				{
+				} else if (isUndirectedHyperEdge(e)) {
 					ins.addAll(getUndirectedHyperEdgeVertices(e));
-				}
-				else if (isDirectedHyperEdge(e))
-				{
+				} else if (isDirectedHyperEdge(e)) {
 					ins.addAll(getDirectedHyperEdgeTail(e));
 				}
 			}
@@ -2281,50 +2008,35 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * @param thisEdge
 	 * @return
 	 */
-	public IntSet getVerticesIncidentToEdge(int e)
-	{
+	public IntSet getVerticesIncidentToEdge(int e) {
 		if (!storeEdges())
 			throw new IllegalAccessError();
 
 		assert getEdges().contains(e);
 
-		if (isSimpleEdge(e))
-		{
+		if (isSimpleEdge(e)) {
 			int a = getOneVertex(e);
 			int b = getTheOtherVertex(e, a);
-			
-			if (a == b)
-			{
+
+			if (a == b) {
 				return new IntSingletonSet(a);
-			}
-			else
-			{
+			} else {
 				return new IntCoupleSet(a, b);
 			}
-		}
-		else if (isUndirectedSimpleEdge(e))
-		{
+		} else if (isUndirectedSimpleEdge(e)) {
 			return getUndirectedHyperEdgeVertices(e);
-		}
-		else
-		{
-			if (getNavigation() == DIRECTION.in_out)
-			{
+		} else {
+			if (getNavigation() == DIRECTION.in_out) {
 				return IntSets.union(getDirectedHyperEdgeTail(e), getDirectedHyperEdgeHead(e));
-			}
-			else if (getNavigation() == DIRECTION.in)
-			{
+			} else if (getNavigation() == DIRECTION.in) {
 				return getDirectedHyperEdgeTail(e);
-			}
-			else
-			{
+			} else {
 				return getDirectedHyperEdgeHead(e);
 			}
 		}
 	}
 
-	public static void main(String[] args)
-	{
+	public static void main(String[] args) {
 		Grph g = ClassicalGraphs.PetersenGraph();
 		g.clone();
 	}
@@ -2333,58 +2045,44 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * Computes a clone of this graph.
 	 */
 	@Override
-	public Grph clone()
-	{
+	public Grph clone() {
 		Grph clone = Clazz.makeInstance(getClass());
 
-		for (IntCursor v : getVertices())
-		{
+		for (IntCursor v : getVertices()) {
 			clone.addVertex(v.value);
 		}
 
-		for (IntCursor c : getEdges())
-		{
+		for (IntCursor c : getEdges()) {
 			int e = c.value;
 
-			if (isUndirectedSimpleEdge(e))
-			{
+			if (isUndirectedSimpleEdge(e)) {
 				int a = getOneVertex(e);
 				int b = getTheOtherVertex(e, a);
 				clone.addUndirectedSimpleEdge(e, a, b);
-			}
-			else if (isDirectedSimpleEdge(e))
-			{
+			} else if (isDirectedSimpleEdge(e)) {
 				int t = getDirectedSimpleEdgeTail(e);
 				int h = getDirectedSimpleEdgeHead(e);
 				clone.addDirectedSimpleEdge(t, e, h);
-			}
-			else if (isUndirectedHyperEdge(e))
-			{
-				for (int v : getUndirectedHyperEdgeVertices(e).toIntArray())
-				{
+			} else if (isUndirectedHyperEdge(e)) {
+				for (int v : getUndirectedHyperEdgeVertices(e).toIntArray()) {
 					clone.addToUndirectedHyperEdge(e, v);
 				}
-			}
-			else if (isDirectedHyperEdge(e))
-			{
-				for (int v : getDirectedHyperEdgeTail(e).toIntArray())
-				{
+			} else if (isDirectedHyperEdge(e)) {
+				for (int v : getDirectedHyperEdgeTail(e).toIntArray()) {
 					clone.addToDirectedHyperEdgeTail(e, v);
 				}
 
-				for (int v : getDirectedHyperEdgeHead(e).toIntArray())
-				{
+				for (int v : getDirectedHyperEdgeHead(e).toIntArray()) {
 					clone.addToDirectedHyperEdgeHead(e, v);
 				}
 			}
 		}
 
-		for (Property p : getProperties())
-		{
-			if (p.getName() != null)
-			{
+		for (Property p : getProperties()) {
+			if (p.getName() != null) {
 				Property cloneProperty = clone.findPropertyByName(p.getName());
-//				System.out.println("cloning " + p.getName() + " to " + cloneProperty.getName());
+				// System.out.println("cloning " + p.getName() + " to " +
+				// cloneProperty.getName());
 				p.cloneValuesTo(cloneProperty);
 			}
 		}
@@ -2392,12 +2090,9 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 		return clone;
 	}
 
-	public Property findPropertyByName(String name)
-	{
-		for (Property p : getProperties())
-		{
-			if (p.getName() != null && p.getName().equals(name))
-			{
+	public Property findPropertyByName(String name) {
+		for (Property p : getProperties()) {
+			if (p.getName() != null && p.getName().equals(name)) {
 				return p;
 			}
 		}
@@ -2410,8 +2105,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return the list of listeners
 	 */
-	public List<TopologyListener> getTopologyListeners()
-	{
+	public List<TopologyListener> getTopologyListeners() {
 		return this.listeners;
 	}
 
@@ -2420,8 +2114,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return true if this graph is directed
 	 */
-	public boolean isDirected()
-	{
+	public boolean isDirected() {
 		return getNumberOfUndirectedEdges() == 0;
 	}
 
@@ -2430,8 +2123,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return an ASCII expression for this graph.
 	 */
-	public String toGrphText()
-	{
+	public String toGrphText() {
 		return new GrphTextWriter().printGraph(this);
 	}
 
@@ -2440,8 +2132,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return an binary expression for this graph.
 	 */
-	public byte[] toGrphBinary()
-	{
+	public byte[] toGrphBinary() {
 		return new GrphBinaryWriter().writeGraph(this);
 	}
 
@@ -2451,8 +2142,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * @return Computes a string containing the GraphML (XML) expression of this
 	 *         graph.
 	 */
-	public String toGraphML()
-	{
+	public String toGraphML() {
 		return new GraphMLWriter().printGraph(this);
 	}
 
@@ -2461,8 +2151,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return Computes a string containing a GraphViz expression of this graph.
 	 */
-	public String toDot()
-	{
+	public String toDot() {
 		return new DotWriter().printGraph(this);
 	}
 
@@ -2472,8 +2161,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return the diameter the of this graph.
 	 */
-	public int getDiameter()
-	{
+	public int getDiameter() {
 		return diameterAlgorithm.compute(this);
 	}
 
@@ -2488,8 +2176,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * @return the result of the maxflow algorithms, which consists in the value
 	 *         for the flow as well as flow assignments for every edge involved.
 	 */
-	public MaxFlowAlgorithmResult computeMaxFlow(int s, int t, NumericalProperty weights)
-	{
+	public MaxFlowAlgorithmResult computeMaxFlow(int s, int t, NumericalProperty weights) {
 		return new MaxFlowAlgorithm().compute(this, s, t, weights);
 	}
 
@@ -2499,8 +2186,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return the diameter the of this graph.
 	 */
-	public double getDensity()
-	{
+	public double getDensity() {
 		return densityAlgorithm.compute(this);
 	}
 
@@ -2510,8 +2196,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return the diameter the of this graph.
 	 */
-	public int getRadius()
-	{
+	public int getRadius() {
 		return radiusAlgorithm.compute(this);
 	}
 
@@ -2520,8 +2205,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return true if this graph is a null graph, false otherwise.
 	 */
-	public boolean isNull()
-	{
+	public boolean isNull() {
 		return getVertices().isEmpty() && getEdges().isEmpty();
 	}
 
@@ -2530,48 +2214,39 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return true if this graph is a trivial graph.
 	 */
-	public boolean isTrivial()
-	{
+	public boolean isTrivial() {
 		return getVertices().size() == 1 && getEdges().isEmpty();
 	}
 
-	public int getMaxInEdgeDegrees()
-	{
+	public int getMaxInEdgeDegrees() {
 		return maxInEdgeDegreeAlgorithm.compute(this);
 	}
 
-	public int getMaxOutEdgeDegrees()
-	{
+	public int getMaxOutEdgeDegrees() {
 		return maxOutEdgeDegreeAlgorithm.compute(this);
 	}
 
-	public int getMinInEdgeDegrees()
-	{
+	public int getMinInEdgeDegrees() {
 		return minInEdgeDegreeAlgorithm.compute(this);
 	}
 
-	public int getMinOutEdgeDegrees()
-	{
+	public int getMinOutEdgeDegrees() {
 		return minOutEdgeDegreeAlgorithm.compute(this);
 	}
 
-	public int getMaxInVertexDegrees()
-	{
+	public int getMaxInVertexDegrees() {
 		return maxInVertexDegreeAlgorithm.compute(this);
 	}
 
-	public int getMaxOutVertexDegrees()
-	{
+	public int getMaxOutVertexDegrees() {
 		return maxOutVertexDegreeAlgorithm.compute(this);
 	}
 
-	public int getMinInVertexDegrees()
-	{
+	public int getMinInVertexDegrees() {
 		return minInVertexDegreeAlgorithm.compute(this);
 	}
 
-	public int getMinOutVertexDegrees()
-	{
+	public int getMinOutVertexDegrees() {
 		return minOutVertexDegreeAlgorithm.compute(this);
 	}
 
@@ -2580,8 +2255,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return true if this graph is a complete graph, false otherwise.
 	 */
-	public boolean isComplete()
-	{
+	public boolean isComplete() {
 		return completenessAlgorithm.compute(this);
 	}
 
@@ -2590,8 +2264,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return true if this graph is a connected graph, false otherwise.
 	 */
-	public boolean isConnected()
-	{
+	public boolean isConnected() {
 		return connectednessAlgorithm.compute(this);
 	}
 
@@ -2600,8 +2273,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return true if this graph is a reflexive graph, false otherwise.
 	 */
-	public boolean isReflexive()
-	{
+	public boolean isReflexive() {
 		return reflexivityAlgorithm.compute(this);
 	}
 
@@ -2610,20 +2282,17 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return true if this graph is a regular graph, false otherwise.
 	 */
-	public boolean isRegular()
-	{
+	public boolean isRegular() {
 		return regularityAlgorithm.compute(this);
 	}
 
-	public Collection<VertexPair> getEdgePairs()
-	{
+	public Collection<VertexPair> getEdgePairs() {
 		if (getNumberOfHyperEdges() > 0)
 			throw new IllegalStateException("this graph has hyperedges");
 
 		Collection<VertexPair> pairs = new ArrayList();
 
-		for (IntCursor c : getEdges())
-		{
+		for (IntCursor c : getEdges()) {
 			int e = c.value;
 			int v1 = getOneVertex(e);
 			int v2 = getTheOtherVertex(e, v1);
@@ -2638,8 +2307,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return the number of hyper edges in this graph.
 	 */
-	public int getNumberOfHyperEdges()
-	{
+	public int getNumberOfHyperEdges() {
 		return getNumberOfDirectedHyperEdges() + getNumberOfUndirectedHyperEdges();
 	}
 
@@ -2647,8 +2315,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return the number of simple edges in this graph.
 	 */
-	public int getNumberOfSimpleEdges()
-	{
+	public int getNumberOfSimpleEdges() {
 		return getNumberOfDirectedSimpleEdges() + getNumberOfUndirectedSimpleEdges();
 	}
 
@@ -2656,8 +2323,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return the number of directed edges in this graph.
 	 */
-	public int getNumberOfDirectedEdges()
-	{
+	public int getNumberOfDirectedEdges() {
 		return getNumberOfDirectedHyperEdges() + getNumberOfDirectedSimpleEdges();
 	}
 
@@ -2665,8 +2331,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return the number of undirected edges in this graph.
 	 */
-	public int getNumberOfUndirectedEdges()
-	{
+	public int getNumberOfUndirectedEdges() {
 		return getNumberOfUndirectedHyperEdges() + getNumberOfUndirectedSimpleEdges();
 	}
 
@@ -2675,8 +2340,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return true if this graph has multiple edges, false otherwise.
 	 */
-	public boolean hasMultipleEdges()
-	{
+	public boolean hasMultipleEdges() {
 		return multigraphnessAlgorithm.compute(this) != null;
 	}
 
@@ -2685,8 +2349,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return true if this graph is a tree, false otherwise.
 	 */
-	public boolean isTree()
-	{
+	public boolean isTree() {
 		return treenessAlgorithm.compute(this);
 	}
 
@@ -2706,22 +2369,17 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return a string denoting the version of Grph.
 	 */
-	public static Version getVersion()
-	{
-		try
-		{
+	public static Version getVersion() {
+		try {
 			Version v = new Version();
 			v.set(new String(new JavaResource("/grph-version.txt").getByteArray()));
 			return v;
-		}
-		catch (IOException e)
-		{
+		} catch (IOException e) {
 			throw new IllegalStateException(e);
 		}
 	}
 
-	public void displayReport() throws IOException
-	{
+	public void displayReport() throws IOException {
 		PDFRenderingAWTComponent c = new PDFRenderingAWTComponent();
 		c.setPDFData(new Report(this).computePDFReport().getContent(), 1);
 		Utilities.displayInJFrame(c, "Grph report");
@@ -2730,52 +2388,42 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	/**
 	 * Display this graph in a graphical frame, using automatic layout.
 	 */
-	public void display()
-	{
+	public void display() {
 		displayGraphstream_0_4_2();
 	}
 
-	public void displaySVGSalamander()
-	{
-		try
-		{
+	public void displaySVGSalamander() {
+		try {
 			byte[] svgdata = new GraphvizImageWriter().writeGraph(this);
 			URI uri = SVGCache.getSVGUniverse().loadSVG(new ByteArrayInputStream(svgdata), "myImage");
 			final SVGIcon icon = new SVGIcon();
 			icon.setSvgURI(uri);
 
-			final JPanel p = new JPanel()
-			{
+			final JPanel p = new JPanel() {
 				@Override
-				public void paintComponent(Graphics g)
-				{
+				public void paintComponent(Graphics g) {
 					icon.paintIcon(this, g, 0, 0);
 				}
 			};
 
-			p.addComponentListener(new ComponentListener()
-			{
+			p.addComponentListener(new ComponentListener() {
 
 				@Override
-				public void componentShown(ComponentEvent e)
-				{
+				public void componentShown(ComponentEvent e) {
 				}
 
 				@Override
-				public void componentResized(ComponentEvent e)
-				{
+				public void componentResized(ComponentEvent e) {
 					icon.setPreferredSize(p.getSize());
 					p.repaint();
 				}
 
 				@Override
-				public void componentMoved(ComponentEvent e)
-				{
+				public void componentMoved(ComponentEvent e) {
 				}
 
 				@Override
-				public void componentHidden(ComponentEvent e)
-				{
+				public void componentHidden(ComponentEvent e) {
 				}
 			});
 
@@ -2785,16 +2433,13 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 			icon.setClipToViewbox(true);
 
 			Utilities.displayInJFrame(p, "SalamanderSVG");
-		}
-		catch (Exception e)
-		{
+		} catch (Exception e) {
 			throw new IllegalArgumentException(e);
 		}
 
 	}
 
-	public JComponent createSwingRenderer()
-	{
+	public JComponent createSwingRenderer() {
 		final byte[] bytearray = new GraphvizImageWriter().writeGraph(this, COMMAND.neato, OUTPUT_FORMAT.fig, false);
 		String figText = new String(bytearray);
 		JFigViewerBean figbean = new JFigViewerBean();
@@ -2805,8 +2450,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 		figbean.createPositionAndZoomPanel(); // show cursor position
 		figbean.setAntiAlias(true);
 
-		try
-		{
+		try {
 			File tempFile = File.createTempFile("lmu", "fig");
 			tempFile.deleteOnExit();
 			FileOutputStream fos = new FileOutputStream(tempFile);
@@ -2818,9 +2462,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 			figbean.doZoomFit();
 
 			return figbean;
-		}
-		catch (IOException ex)
-		{
+		} catch (IOException ex) {
 			throw new IllegalStateException(ex);
 		}
 
@@ -2831,29 +2473,24 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @param r
 	 */
-	public void performRandomTopologicalChange(Random r)
-	{
+	public void performRandomTopologicalChange(Random r) {
 		assert r != null;
 
 		// if work on vertices
-		if (!storeEdges() || r.nextBoolean() || getVertices().isEmpty())
-		{
+		if (!storeEdges() || r.nextBoolean() || getVertices().isEmpty()) {
 			double rd = r.nextDouble();
 
 			// if create a new vertex
-			if (rd < 0.5 || getVertices().isEmpty())
-			{
+			if (rd < 0.5 || getVertices().isEmpty()) {
 				addVertex();
 			}
 			// else remove an existing vertex
-			else if (rd < 0.66666 && getVertices().size() >= 2)
-			{
+			else if (rd < 0.66666 && getVertices().size() >= 2) {
 				int v = getVertices().pickRandomElement(r);
 				int n = getEdgesIncidentTo(v).size();
 				removeVertex(v);
 
-				while (n-- > 0)
-				{
+				while (n-- > 0) {
 					int a = getVertices().pickRandomElement(r);
 					int b = getVertices().pickRandomElement(r);
 					addUndirectedSimpleEdge(a, b);
@@ -2861,26 +2498,20 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 			}
 		}
 		// work on edges
-		else
-		{
+		else {
 			double rd = r.nextDouble();
 
 			// if create
-			if (rd < 0.5 || getEdges().isEmpty())
-			{
+			if (rd < 0.5 || getEdges().isEmpty()) {
 				int a = getVertices().pickRandomElement(r);
 				int b = getVertices().pickRandomElement(r);
 
-				if (r.nextBoolean())
-				{
+				if (r.nextBoolean()) {
 					addDirectedSimpleEdge(a, b);
-				}
-				else
-				{
+				} else {
 					addUndirectedSimpleEdge(a, b);
 				}
-			}
-			else
+			} else
 			// else remove
 			{
 				removeEdge(getEdges().pickRandomElement(r));
@@ -2897,8 +2528,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 *            the destination of the arc
 	 * @return the value of the new arc
 	 */
-	public int addDirectedSimpleEdge(int tail, int head)
-	{
+	public int addDirectedSimpleEdge(int tail, int head) {
 		assert tail >= 0;
 		assert head >= 0;
 
@@ -2912,8 +2542,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return a set of vertices
 	 */
-	public IntSet getIsolatedVertices()
-	{
+	public IntSet getIsolatedVertices() {
 		return isolatedVerticesAlgorithm.compute(this);
 	}
 
@@ -2922,8 +2551,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return the order of this graph.
 	 */
-	public int getOrder()
-	{
+	public int getOrder() {
 		return getVertices().size();
 	}
 
@@ -2932,8 +2560,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return the number of vertices in this graph.
 	 */
-	public int getNumberOfVertices()
-	{
+	public int getNumberOfVertices() {
 		return getVertices().size();
 	}
 
@@ -2945,26 +2572,18 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 *            a vertex
 	 * @return the set of neighbors of v
 	 */
-	public IntSet getNeighbours(int v)
-	{
+	public IntSet getNeighbours(int v) {
 		assert v >= 0;
 		IntSet in = getInNeighbors(v);
 		IntSet out = getOutNeighbors(v);
 
-		if (in.isEmpty() && out.isEmpty())
-		{
+		if (in.isEmpty() && out.isEmpty()) {
 			return IntSets.emptySet;
-		}
-		else if (in.isEmpty())
-		{
+		} else if (in.isEmpty()) {
 			return out;
-		}
-		else if (out.isEmpty())
-		{
+		} else if (out.isEmpty()) {
 			return in;
-		}
-		else
-		{
+		} else {
 			return IntSets.union(in, out);
 		}
 	}
@@ -2978,8 +2597,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 *            a set of vertices
 	 * @return the set of (open) neighbors of s
 	 */
-	public IntSet getNeighbours(IntSet s)
-	{
+	public IntSet getNeighbours(IntSet s) {
 		IntSet n = new DefaultIntSet();
 
 		for (int v : s.toIntArray())
@@ -2999,126 +2617,92 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 *            the direction of the degree (in or out)
 	 * @return the value of the specified degree
 	 */
-	public int getVertexDegree(int v, Grph.TYPE type, Grph.DIRECTION dir)
-	{
+	public int getVertexDegree(int v, Grph.TYPE type, Grph.DIRECTION dir) {
 		assert getVertices().contains(v) : "vertex not in graph : " + v;
 
-		if (type == Grph.TYPE.edge)
-		{
-			if (dir == Grph.DIRECTION.in)
-			{
+		if (type == Grph.TYPE.edge) {
+			if (dir == Grph.DIRECTION.in) {
 				return getInEdges(v).size();
-			}
-			else if (dir == Grph.DIRECTION.out)
-			{
+			} else if (dir == Grph.DIRECTION.out) {
 				return getOutEdges(v).size();
-			}
-			else
-			{
+			} else {
 				return IntSets.union(getInEdges(v), getOutEdges(v)).size();
 			}
-		}
-		else
-		{
-			if (dir == Grph.DIRECTION.in)
-			{
+		} else {
+			if (dir == Grph.DIRECTION.in) {
 				return getInNeighbors(v).size();
-			}
-			else if (dir == Grph.DIRECTION.out)
-			{
+			} else if (dir == Grph.DIRECTION.out) {
 				return getOutNeighbors(v).size();
-			}
-			else
-			{
+			} else {
 				return IntSets.union(getInNeighbors(v), getOutNeighbors(v)).size();
 			}
 		}
 	}
 
-	public int getEdgeDegree(int v)
-	{
+	public int getEdgeDegree(int v) {
 		return getVertexDegree(v, Grph.TYPE.edge, Grph.DIRECTION.in_out);
 	}
 
-	public int getVertexDegree(int v)
-	{
+	public int getVertexDegree(int v) {
 		return getVertexDegree(v, Grph.TYPE.vertex, Grph.DIRECTION.in_out);
 	}
 
-	public Collection<IntSet> getGpmetisPartitionning(int numberOfPartitions, Random r)
-	{
+	public Collection<IntSet> getGpmetisPartitionning(int numberOfPartitions, Random r) {
 		return new Gpmetis().compute(this, numberOfPartitions, r);
 	}
 
-	public Collection<IntSet> getGpmetisPartitionning(int numberOfPartitions, Ptype ptype, Ctype ctype, Iptype iptype, Objtype objtype, boolean contig,
-			boolean minconn, int ufactor, int niter, int ncuts, Random r)
-	{
-		return new Gpmetis().compute(this, numberOfPartitions, ptype, ctype, iptype, objtype, contig, minconn, ufactor, niter, ncuts, r);
+	public Collection<IntSet> getGpmetisPartitionning(int numberOfPartitions, Ptype ptype, Ctype ctype, Iptype iptype,
+			Objtype objtype, boolean contig, boolean minconn, int ufactor, int niter, int ncuts, Random r) {
+		return new Gpmetis().compute(this, numberOfPartitions, ptype, ctype, iptype, objtype, contig, minconn, ufactor,
+				niter, ncuts, r);
 	}
 
-	public int getInEdgeDegree(int v)
-	{
+	public int getInEdgeDegree(int v) {
 		return getVertexDegree(v, Grph.TYPE.edge, Grph.DIRECTION.in);
 	}
 
-	public int getInVertexDegree(int v)
-	{
+	public int getInVertexDegree(int v) {
 		return getVertexDegree(v, Grph.TYPE.vertex, Grph.DIRECTION.in);
 	}
 
-	public int getOutEdgeDegree(int v)
-	{
+	public int getOutEdgeDegree(int v) {
 		return getVertexDegree(v, Grph.TYPE.edge, Grph.DIRECTION.out);
 	}
 
-	public int getOutVertexDegree(int v)
-	{
+	public int getOutVertexDegree(int v) {
 		return getVertexDegree(v, Grph.TYPE.vertex, Grph.DIRECTION.out);
 	}
 
-	public IntSet getEdgesConnecting(int src, int dest)
-	{
+	public IntSet getEdgesConnecting(int src, int dest) {
 		assert getVertices().contains(src);
 		assert getVertices().contains(dest);
 		return IntSets.intersection(getOutEdges(src), getInEdges(dest));
 	}
 
-	public void addHyperEdge(int edge, int... vertices)
-	{
+	public void addHyperEdge(int edge, int... vertices) {
 		assert getEdges().contains(edge);
 		addUndirectedHyperEdge(edge);
 
-		for (int v : vertices)
-		{
+		for (int v : vertices) {
 			assert v >= 0;
 			addToUndirectedHyperEdge(edge, v);
 		}
 	}
 
-	public IntSet getInNeighbors(int v)
-	{
+	public IntSet getInNeighbors(int v) {
 		assert v >= 0 : v;
 
-		if (!storeEdges())
-		{
+		if (!storeEdges()) {
 			return IntSets.union(getInOnlyElements(v), getInOutOnlyElements(v));
-		}
-		else
-		{
+		} else {
 			IntSet ins = new GrphInternalSet();
 
-			for (int e : getInEdges(v).toIntArray())
-			{
-				if (isSimpleEdge(e))
-				{
+			for (int e : getInEdges(v).toIntArray()) {
+				if (isSimpleEdge(e)) {
 					ins.add(getTheOtherVertex(e, v));
-				}
-				else if (isUndirectedHyperEdge(e))
-				{
+				} else if (isUndirectedHyperEdge(e)) {
 					ins.addAll(getUndirectedHyperEdgeVertices(e));
-				}
-				else if (isDirectedHyperEdge(e))
-				{
+				} else if (isDirectedHyperEdge(e)) {
 					ins.addAll(getDirectedHyperEdgeTail(e));
 				}
 			}
@@ -3127,35 +2711,25 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 		}
 	}
 
-	public IntSet getNeighbours(int vertex, Grph.DIRECTION direction)
-	{
+	public IntSet getNeighbours(int vertex, Grph.DIRECTION direction) {
 		assert vertex >= 0;
 
-		if (direction == direction.out)
-		{
+		if (direction == direction.out) {
 			return getOutNeighbors(vertex);
-		}
-		else if (direction == direction.in)
-		{
+		} else if (direction == direction.in) {
 			return getInNeighbors(vertex);
-		}
-		else
-		{
+		} else {
 			return getNeighbours(vertex);
 		}
 	}
 
-	public IntSet getKClosestNeighbors(int vertex, int k, NumericalProperty edgeWeights)
-	{
+	public IntSet getKClosestNeighbors(int vertex, int k, NumericalProperty edgeWeights) {
 		assert k >= 0;
 		assert vertex >= 0;
 
-		if (k == 0)
-		{
+		if (k == 0) {
 			return IntSets.emptySet;
-		}
-		else
-		{
+		} else {
 			IntDeque queue = new IntArrayDeque();
 			queue.addLast(vertex);
 			double[] distance = new double[getVertices().getGreatest() + 1];
@@ -3164,27 +2738,23 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 
 			IntSet r = new DefaultIntSet();
 
-			while (!queue.isEmpty())
-			{
+			while (!queue.isEmpty()) {
 				int v = queue.removeFirst();
 
-				for (int e : getOutEdges(v).toIntArray())
-				{
+				for (int e : getOutEdges(v).toIntArray()) {
 					double weight = edgeWeights == null ? 1 : edgeWeights.getValueAsDouble(e);
 
 					int neighbour = getTheOtherVertex(e, v);
 					double d = distance[v] + weight;
 
 					// if this vertex was not yet visited
-					if (distance[neighbour] == -1 || distance[neighbour] > d)
-					{
+					if (distance[neighbour] == -1 || distance[neighbour] > d) {
 						distance[neighbour] = d;
 
 						queue.addLast(neighbour);
 						r.add(neighbour);
 
-						if (r.size() == k)
-						{
+						if (r.size() == k) {
 							return r;
 						}
 					}
@@ -3198,17 +2768,13 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 		}
 	}
 
-	public IntSet getNeighborsAtMaxDistance(int vertex, int maxDistance, NumericalProperty p)
-	{
+	public IntSet getNeighborsAtMaxDistance(int vertex, int maxDistance, NumericalProperty p) {
 		assert maxDistance >= 0;
 		assert vertex >= 0;
 
-		if (maxDistance == 0)
-		{
+		if (maxDistance == 0) {
 			return IntSets.emptySet;
-		}
-		else
-		{
+		} else {
 			IntDeque queue = new IntArrayDeque();
 			queue.addLast(vertex);
 			double[] distance = new double[getVertices().getGreatest() + 1];
@@ -3216,27 +2782,22 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 			distance[vertex] = 0;
 			IntSet r = new DefaultIntSet();
 
-			while (!queue.isEmpty())
-			{
+			while (!queue.isEmpty()) {
 				int v = queue.removeFirst();
 
-				for (int e : getOutEdges(v).toIntArray())
-				{
+				for (int e : getOutEdges(v).toIntArray()) {
 					double weight = p.getValueAsDouble(e);
 					int neighbour = getTheOtherVertex(e, v);
 					double neighborDistance = distance[v] + weight;
 
-					if (neighborDistance < maxDistance)
-					{
+					if (neighborDistance < maxDistance) {
 						r.add(neighbour);
 
-						if (distance[neighbour] == -1)
-						{
+						if (distance[neighbour] == -1) {
 							queue.addLast(neighbour);
 						}
 
-						if (distance[neighbour] == -1 || neighborDistance < distance[neighbour])
-						{
+						if (distance[neighbour] == -1 || neighborDistance < distance[neighbour]) {
 							distance[neighbour] = neighborDistance;
 						}
 					}
@@ -3247,46 +2808,39 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 		}
 	}
 
-	public IntSet getNeighboursAtMostKHops(int k, int v)
-	{
+	public IntSet getNeighboursAtMostKHops(int k, int v) {
 		List<IntSet> fringes = getFringes(k, v);
 		IntSet r = new DefaultIntSet();
 
-		for (int i = 1; i <= k && i < fringes.size(); ++i)
-		{
+		for (int i = 1; i <= k && i < fringes.size(); ++i) {
 			r.addAll(fringes.get(i));
 		}
 
 		return r;
 	}
 
-	public List<IntSet> getFringes(int numberOfHops, int root)
-	{
+	public List<IntSet> getFringes(int numberOfHops, int root) {
 		assert numberOfHops >= 0;
 		assert getVertices().contains(root);
 
 		List<IntSet> hops = new ArrayList();
 		hops.add(IntSets.singleton(root));
 
-		for (int hop = 1; hop <= numberOfHops; ++hop)
-		{
+		for (int hop = 1; hop <= numberOfHops; ++hop) {
 			IntHashSet verticesAtThisHop = new IntHashSet();
 
-			for (IntCursor v : hops.get(hop - 1))
-			{
+			for (IntCursor v : hops.get(hop - 1)) {
 				verticesAtThisHop.addAll(getOutNeighbors(v.value));
 			}
 
 			// remove the vertices that were already found at previous hops
-			for (int j = 0; j < hop; ++j)
-			{
+			for (int j = 0; j < hop; ++j) {
 				verticesAtThisHop.removeAll(hops.get(j));
 			}
 
 			// if we have reached the border of the graph, no need to iterate
 			// again
-			if (verticesAtThisHop.isEmpty())
-			{
+			if (verticesAtThisHop.isEmpty()) {
 				break;
 			}
 
@@ -3303,15 +2857,12 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 *            any vertex belonging to the graph
 	 * @return the set of self-loops (edges) incident to v
 	 */
-	public IntSet getLoops(int v)
-	{
+	public IntSet getLoops(int v) {
 		assert v >= 0;
 		IntSet loops = new IntHashSet();
 
-		for (IntCursor edge : getOutEdges(v))
-		{
-			if (isLoop(edge.value))
-			{
+		for (IntCursor edge : getOutEdges(v)) {
+			if (isLoop(edge.value)) {
 				loops.add(edge.value);
 			}
 		}
@@ -3324,21 +2875,17 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return true if the given edge is a loop
 	 */
-	public boolean isLoop(int edge)
-	{
+	public boolean isLoop(int edge) {
 		if (getNavigation() != DIRECTION.in_out)
 			throw new IllegalAccessError("cannot determine if this is a loop becase in_out navigation is not allowed");
 
 		assert getEdges().contains(edge);
 
-		if (isSimpleEdge(edge))
-		{
+		if (isSimpleEdge(edge)) {
 			int a = getOneVertex(edge);
 			int b = getTheOtherVertex(edge, a);
 			return a == b;
-		}
-		else if (isDirectedHyperEdge(edge))
-		{
+		} else if (isDirectedHyperEdge(edge)) {
 			return getDirectedHyperEdgeTail(edge).equals(getDirectedHyperEdgeHead(edge));
 		}
 
@@ -3352,14 +2899,11 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 *            a vertex
 	 * @return true if vertex v has a loop, false otherwise
 	 */
-	public boolean hasLoop(int v)
-	{
+	public boolean hasLoop(int v) {
 		assert getVertices().contains(v);
 
-		for (IntCursor edge : getOutEdges(v))
-		{
-			if (isLoop(edge.value))
-			{
+		for (IntCursor edge : getOutEdges(v)) {
+			if (isLoop(edge.value)) {
 				return true;
 			}
 		}
@@ -3376,8 +2920,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * @param graph
 	 * @return
 	 */
-	public IntSet getInaccessibleVertices()
-	{
+	public IntSet getInaccessibleVertices() {
 		return inacessibleVertices.compute(this);
 	}
 
@@ -3386,8 +2929,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return a set of vertex sets, each described a connected component
 	 */
-	public Collection<IntSet> getConnectedComponents()
-	{
+	public Collection<IntSet> getConnectedComponents() {
 		return connectedComponentsAlg.compute(this);
 	}
 
@@ -3397,8 +2939,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * @param directed
 	 *            whether edges should be directed or not
 	 */
-	public void chain(boolean directed)
-	{
+	public void chain(boolean directed) {
 		ChainTopologyGenerator tg = new ChainTopologyGenerator();
 		tg.createDirectedLinks(directed);
 		tg.compute(this);
@@ -3414,29 +2955,24 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 *            a direction (in, out or in_out)
 	 * @return a set of edges describing the connected component
 	 */
-	public IntSet getConnectedComponentContaining(int vertex, Grph.DIRECTION direction)
-	{
+	public IntSet getConnectedComponentContaining(int vertex, Grph.DIRECTION direction) {
 		final IntSet l = new DefaultIntSet();
 		l.add(vertex);
 
-		new BFSAlgorithm().compute(this, vertex, direction, new GraphSearchListener()
-		{
+		new BFSAlgorithm().compute(this, vertex, direction, new GraphSearchListener() {
 
 			@Override
-			public void searchStarted()
-			{
+			public void searchStarted() {
 			}
 
 			@Override
-			public DECISION vertexFound(int v)
-			{
+			public DECISION vertexFound(int v) {
 				l.add(v);
 				return DECISION.CONTINUE;
 			}
 
 			@Override
-			public void searchCompleted()
-			{
+			public void searchCompleted() {
 				// TODO Auto-generated method stub
 
 			}
@@ -3446,8 +2982,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 		return l;
 	}
 
-	private void testgetConnectedComponentContaining()
-	{
+	private void testgetConnectedComponentContaining() {
 		Grph g = ClassicalGraphs.PetersenGraph();
 		IntSet cc = g.getConnectedComponentContaining(0, Grph.DIRECTION.out);
 		UnitTests.ensureEquals(cc.size(), g.getVertices().size());
@@ -3458,8 +2993,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return true is this graph is a simple graph, false otherwise.
 	 */
-	public boolean isSimple()
-	{
+	public boolean isSimple() {
 		return simplenessAlgorithm.compute(this);
 	}
 
@@ -3468,8 +3002,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return true is this graph is an irreflexive graph, false otherwise.
 	 */
-	public boolean isIrreflexive()
-	{
+	public boolean isIrreflexive() {
 		return irreflexiveAlgorithm.compute(this);
 	}
 
@@ -3482,12 +3015,10 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 *            the direction (in, out or in_out)
 	 * @return the distribution object
 	 */
-	public Distribution<Integer> getDegreeDistribution(Grph.TYPE type, Grph.DIRECTION dir)
-	{
+	public Distribution<Integer> getDegreeDistribution(Grph.TYPE type, Grph.DIRECTION dir) {
 		Distribution<Integer> d = new Distribution<Integer>("Degree distribution");
 
-		for (IntCursor thisVertex : getVertices())
-		{
+		for (IntCursor thisVertex : getVertices()) {
 			d.addOccurence(getVertexDegree(thisVertex.value, type, dir));
 		}
 
@@ -3501,8 +3032,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 *            a vertex
 	 * @return true if vertex v is simplicial, false otherwise.
 	 */
-	public boolean isSimplicial(int v)
-	{
+	public boolean isSimplicial(int v) {
 		IntSet neighbors = getNeighbours(v);
 		neighbors.add(v);
 		return isClique(neighbors);
@@ -3516,8 +3046,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 *            this graph
 	 * @return
 	 */
-	public IntSet prune(boolean recursive)
-	{
+	public IntSet prune(boolean recursive) {
 		return removeVertices(new ElementFilter.LeafFilter(this), recursive);
 	}
 
@@ -3529,23 +3058,19 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * @param recursive
 	 * @return the set of removed vertices
 	 */
-	public IntSet removeVertices(IntSetFilter filter, boolean recursive)
-	{
+	public IntSet removeVertices(IntSetFilter filter, boolean recursive) {
 		IntSet r = new DefaultIntSet();
 
-		do
-		{
+		do {
 			IntSet s = getVertices().filter(filter);
 
 			if (s.isEmpty())
 				break;
-			else
-			{
+			else {
 				r.addAll(s);
 				removeVertices(s);
 			}
-		}
-		while (recursive);
+		} while (recursive);
 
 		return r;
 	}
@@ -3557,18 +3082,13 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 *            a set of vertices
 	 * @return true if s is a clique in this graph, false otherwise.
 	 */
-	public boolean isClique(IntSet s)
-	{
+	public boolean isClique(IntSet s) {
 		int[] array = s.toIntArray();
 
-		for (int a : array)
-		{
-			for (int b : array)
-			{
-				if (a != b)
-				{
-					if (getEdgesConnecting(a, b).isEmpty())
-					{
+		for (int a : array) {
+			for (int b : array) {
+				if (a != b) {
+					if (getEdgesConnecting(a, b).isEmpty()) {
 						return false;
 					}
 				}
@@ -3586,16 +3106,13 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 *            a vertex
 	 * @return true if a cycle has been found, false otherwise.
 	 */
-	public boolean hasCycles(int src)
-	{
+	public boolean hasCycles(int src) {
 		assert src >= 0;
 
 		byte[] colors = new byte[getVertices().getGreatest() + 1];
 
-		if (colors[src] == 0)
-		{
-			if (hasCycles_visit(src, colors))
-			{
+		if (colors[src] == 0) {
+			if (hasCycles_visit(src, colors)) {
 				return true;
 			}
 		}
@@ -3604,22 +3121,16 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 
 	}
 
-	private boolean hasCycles_visit(int v, byte[] colors)
-	{
+	private boolean hasCycles_visit(int v, byte[] colors) {
 		colors[v] = 1;
 
-		for (IntCursor u : getOutNeighbors(v))
-		{
+		for (IntCursor u : getOutNeighbors(v)) {
 			int ucolor = colors[u.value];
 
-			if (ucolor == 1)
-			{
+			if (ucolor == 1) {
 				return true;
-			}
-			else if (ucolor == 0)
-			{
-				if (hasCycles_visit(u.value, colors))
-				{
+			} else if (ucolor == 0) {
+				if (hasCycles_visit(u.value, colors)) {
 					return true;
 				}
 			}
@@ -3634,17 +3145,14 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return
 	 */
-	public IntArrayList sortTopologically()
-	{
+	public IntArrayList sortTopologically() {
 		return topologicalSortingAlg.compute(this);
 	}
 
-	public IntArrayList getAllInEdgeDegrees()
-	{
+	public IntArrayList getAllInEdgeDegrees() {
 		IntArrayList inDegrees = new IntArrayList(getVertices().getGreatest() + 1);
 
-		for (IntCursor v : getVertices())
-		{
+		for (IntCursor v : getVertices()) {
 			inDegrees.add(getVertexDegree(v.value, Grph.TYPE.edge, Grph.DIRECTION.in));
 		}
 
@@ -3657,13 +3165,11 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * @param n
 	 *            the number of vertices to be created.
 	 */
-	public IntSet addNVertices(int n)
-	{
+	public IntSet addNVertices(int n) {
 		assert n >= 0 : "cannot create a negative number of vertices";
 		IntSet s = new DefaultIntSet();
 
-		for (int i = 0; i < n; ++i)
-		{
+		for (int i = 0; i < n; ++i) {
 			s.add(addVertex());
 		}
 
@@ -3676,8 +3182,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return true is this graph has at least one cycle (or circuit).
 	 */
-	public boolean isCyclic()
-	{
+	public boolean isCyclic() {
 		return isCyclicAlgorithm.compute(this);
 	}
 
@@ -3686,8 +3191,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return t
 	 */
-	public void glp()
-	{
+	public void glp() {
 		GLPIssamTopologyGenerator glp = new GLPIssamTopologyGenerator();
 		glp.compute(this);
 	}
@@ -3697,8 +3201,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return the average degree
 	 */
-	public double getAverageDegree()
-	{
+	public double getAverageDegree() {
 		return avgDegreeAlgorithm.compute(this);
 
 	}
@@ -3712,12 +3215,10 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 *            the direction (in, out, in_out)
 	 * @return the average degree
 	 */
-	public double getAverageDegree(Grph.TYPE type, Grph.DIRECTION direction)
-	{
+	public double getAverageDegree(Grph.TYPE type, Grph.DIRECTION direction) {
 		IntArrayList l = new IntArrayList();
 
-		for (IntCursor c : getVertices())
-		{
+		for (IntCursor c : getVertices()) {
 			l.add(getVertexDegree(c.value, type, direction));
 		}
 
@@ -3734,17 +3235,16 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * @return a shortest path from source to destination, or null if no path
 	 *         can be found.
 	 */
-    public SearchResultWrappedPath getShortestPath(int source, int destination, NumericalProperty edgeWeights) {
-        SearchResult result = search(source, edgeWeights);
-        if (result.distances[destination] < 0) {
-            return null;
-        } else {
-            return new SearchResultWrappedPath(result, source, destination);
-        }
-    }
+	public SearchResultWrappedPath getShortestPath(int source, int destination, NumericalProperty edgeWeights) {
+		SearchResult result = search(source, edgeWeights);
+		if (result.distances[destination] < 0) {
+			return null;
+		} else {
+			return new SearchResultWrappedPath(result, source, destination);
+		}
+	}
 
-	public Path getShortestPath(int source, int destination)
-	{
+	public Path getShortestPath(int source, int destination) {
 		return getShortestPath(source, destination, null);
 	}
 
@@ -3755,46 +3255,36 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 *            a vertex to start the BFS from.
 	 * @return the data that could be computed along the BFS.
 	 */
-	public SearchResult bfs(int source)
-	{
+	public SearchResult bfs(int source) {
 		return new BFSAlgorithm().compute(this, source);
 	}
 
-	public SearchResult[] bfs(IntSet sources)
-	{
+	public SearchResult[] bfs(IntSet sources) {
 		return new BFSAlgorithm().compute(this, sources);
 	}
 
-	public boolean containsAPath(int source, final int destination)
-	{
+	public boolean containsAPath(int source, final int destination) {
 		final boolean[] found = new boolean[1];
 		found[0] = false;
 
-		new BFSAlgorithm().compute(this, source, Grph.DIRECTION.out, new GraphSearchListener()
-		{
+		new BFSAlgorithm().compute(this, source, Grph.DIRECTION.out, new GraphSearchListener() {
 
 			@Override
-			public void searchStarted()
-			{
+			public void searchStarted() {
 			}
 
 			@Override
-			public DECISION vertexFound(int v)
-			{
-				if (v == destination)
-				{
+			public DECISION vertexFound(int v) {
+				if (v == destination) {
 					found[0] = true;
 					return DECISION.STOP;
-				}
-				else
-				{
+				} else {
 					return DECISION.CONTINUE;
 				}
 			}
 
 			@Override
-			public void searchCompleted()
-			{
+			public void searchCompleted() {
 			}
 
 		});
@@ -3802,8 +3292,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 		return found[0];
 	}
 
-	private void testcontainsAPath()
-	{
+	private void testcontainsAPath() {
 		Grph g = ClassicalGraphs.PetersenGraph();
 		UnitTests.ensure(containsAPath(0, 5));
 	}
@@ -3818,33 +3307,24 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return
 	 */
-	public int[][] getOutNeighborhoods()
-	{
+	public int[][] getOutNeighborhoods() {
 		return outNeighborsAlgorithm.compute(this);
 	}
 
-	public int[][] getInNeighborhoods()
-	{
+	public int[][] getInNeighborhoods() {
 		return inNeighborsAlgorithm.compute(this);
 	}
 
-	public int[][] getNeighborhoods()
-	{
+	public int[][] getNeighborhoods() {
 		return inOutNeighborsAlgorithm.compute(this);
 	}
 
-	public int[][] getNeighbors(Grph.DIRECTION direction)
-	{
-		if (direction == Grph.DIRECTION.in)
-		{
+	public int[][] getNeighbors(Grph.DIRECTION direction) {
+		if (direction == Grph.DIRECTION.in) {
 			return getInNeighborhoods();
-		}
-		else if (direction == Grph.DIRECTION.out)
-		{
+		} else if (direction == Grph.DIRECTION.out) {
 			return getOutNeighborhoods();
-		}
-		else
-		{
+		} else {
 			return getNeighborhoods();
 		}
 	}
@@ -3855,16 +3335,14 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return an approximation of the diameter.
 	 */
-	public int getTwoSweepBFSDiameterApproximatedDiameter()
-	{
+	public int getTwoSweepBFSDiameterApproximatedDiameter() {
 		return twoSweepDiameterAlg.compute(this);
 	}
 
 	/**
 	 * Connect all vertices in this graph as a clique.
 	 */
-	public void clique()
-	{
+	public void clique() {
 		clique(getVertices());
 	}
 
@@ -3873,18 +3351,15 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return true if this graph is an antigraph, false otherwise.
 	 */
-	public boolean isAntigraph()
-	{
+	public boolean isAntigraph() {
 		return new AntiGraphAlgorithm().compute(this);
 	}
 
-	public Collection<Path> getAllPaths()
-	{
+	public Collection<Path> getAllPaths() {
 		return new AllPaths().compute(this);
 	}
 
-	public Set<Path> getAllCycles()
-	{
+	public Set<Path> getAllCycles() {
 		return new FindAllCycles().compute(this);
 	}
 
@@ -3893,14 +3368,10 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return a distance matrix.
 	 */
-	public DistanceMatrix getDistanceMatrix(NumericalProperty edgeWeights)
-	{
-		if (edgeWeights == null)
-		{
+	public DistanceMatrix getDistanceMatrix(NumericalProperty edgeWeights) {
+		if (edgeWeights == null) {
 			return unweightedDistanceMatrixAlgorithm.compute(this);
-		}
-		else
-		{
+		} else {
 			return new StackBasedBellmanFordWeightedMatrixAlgorithm(edgeWeights).compute(this);
 		}
 	}
@@ -3910,8 +3381,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return a adjacency matrix.
 	 */
-	public AdjacencyMatrix getAdjacencyMatrix()
-	{
+	public AdjacencyMatrix getAdjacencyMatrix() {
 		return adjacencyMatrixAlgo.compute(this);
 	}
 
@@ -3920,8 +3390,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return a incidence matrix.
 	 */
-	public IntMatrix getIncidenceMatrix()
-	{
+	public IntMatrix getIncidenceMatrix() {
 		return incidenceMatrixAlgo.compute(this);
 	}
 
@@ -3931,18 +3400,14 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * @param s
 	 *            the set of vertices to be removed from the graph.
 	 */
-	public void removeVertices(IntSet s)
-	{
-		for (IntCursor c : s)
-		{
+	public void removeVertices(IntSet s) {
+		for (IntCursor c : s) {
 			removeVertex(c.value);
 		}
 	}
 
-	public void addVertices(IntSet s)
-	{
-		for (IntCursor c : s)
-		{
+	public void addVertices(IntSet s) {
+		for (IntCursor c : s) {
 			addVertex(c.value);
 		}
 	}
@@ -3952,8 +3417,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return a degree-sorted array of all vertices.
 	 */
-	public int[] sortVerticesByDegree()
-	{
+	public int[] sortVerticesByDegree() {
 		return new OutDegreeSorter().sort(this, getVertices());
 	}
 
@@ -3970,8 +3434,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * @return the generated graphviz file
 	 * @throws IOException
 	 */
-	public RegularFile toGraphviz(COMMAND cmd, OUTPUT_FORMAT outputFormat, Directory destination) throws IOException
-	{
+	public RegularFile toGraphviz(COMMAND cmd, OUTPUT_FORMAT outputFormat, Directory destination) throws IOException {
 		RegularFile f = new RegularFile(destination, destination.getUniqFileName("grph-", '.' + outputFormat.name()));
 		ByteArrayOutputStream bos = new ByteArrayOutputStream();
 		new GraphvizImageWriter().writeGraph(this, cmd, OUTPUT_FORMAT.png, false, bos);
@@ -3981,14 +3444,10 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 		return f;
 	}
 
-	public RegularFile toGraphviz(COMMAND cmd, OUTPUT_FORMAT outputFormat)
-	{
-		try
-		{
+	public RegularFile toGraphviz(COMMAND cmd, OUTPUT_FORMAT outputFormat) {
+		try {
 			return toGraphviz(cmd, outputFormat, Directory.getSystemTempDirectory());
-		}
-		catch (IOException e)
-		{
+		} catch (IOException e) {
 			throw new IllegalStateException(e);
 		}
 	}
@@ -4000,8 +3459,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 *            a vertex in the graph
 	 * @return true if the vertex is a source one, false otherwise.
 	 */
-	public boolean isSource(int v)
-	{
+	public boolean isSource(int v) {
 		return getInEdgeDegree(v) == 0 && getOutEdgeDegree(v) > 0;
 	}
 
@@ -4012,8 +3470,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 *            a vertex in the graph
 	 * @return true if the vertex is a sink one, false otherwise.
 	 */
-	public boolean isSink(int v)
-	{
+	public boolean isSink(int v) {
 		return getInEdgeDegree(v) > 0 && getOutEdgeDegree(v) == 0;
 	}
 
@@ -4024,35 +3481,28 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 *            a vertex in the graph
 	 * @return true if the vertex is a leaf, false otherwise.
 	 */
-	public boolean isLeaf(int v)
-	{
+	public boolean isLeaf(int v) {
 		IntSet inEdges = getInEdges(v);
 
 		// if there is only one way to enter the vertex
-		if (inEdges.size() == 1)
-		{
+		if (inEdges.size() == 1) {
 			IntSet outEdges = getOutEdges(v);
 			int outDegree = outEdges.size();
 
 			// no way out, it's a leaf !!!
-			if (outDegree == 0)
-			{
+			if (outDegree == 0) {
 				return true;
 			}
 			// one way out? if it's the same way as the way in, it's an
 			// undirected edge, okay, it's a leaf
-			else if (outDegree == 1)
-			{
+			else if (outDegree == 1) {
 				return inEdges.getGreatest() == outEdges.getGreatest();
 			}
 			// many ways to get out, it's not a leaf
-			else
-			{
+			else {
 				return false;
 			}
-		}
-		else
-		{
+		} else {
 			return false;
 		}
 	}
@@ -4063,25 +3513,19 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * @return the set of vertices describing the largest connected component in
 	 *         the graph
 	 */
-	public IntSet getLargestConnectedComponent()
-	{
+	public IntSet getLargestConnectedComponent() {
 		Collection<IntSet> cc = getConnectedComponents();
 
-		if (cc.isEmpty())
-		{
+		if (cc.isEmpty()) {
 			return null;
-		}
-		else
-		{
+		} else {
 			Iterator<IntSet> i = cc.iterator();
 			IntSet greatest = i.next();
 
-			while (i.hasNext())
-			{
+			while (i.hasNext()) {
 				IntSet s = i.next();
 
-				if (s.size() > greatest.size())
-				{
+				if (s.size() > greatest.size()) {
 					greatest = s;
 				}
 			}
@@ -4095,8 +3539,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return a textual description of not specified form.
 	 */
-	public String getDescription()
-	{
+	public String getDescription() {
 		StringBuilder b = new StringBuilder();
 
 		b.append(toString());
@@ -4115,8 +3558,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * @param n
 	 *            the minimum number of vertices required for this graph.
 	 */
-	public void ensureNVertices(int n)
-	{
+	public void ensureNVertices(int n) {
 		addNVertices(Math.max(n - getVertices().size(), 0));
 	}
 
@@ -4126,8 +3568,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return a set of vertices describing the clique
 	 */
-	public IntSet getMaximumClique()
-	{
+	public IntSet getMaximumClique() {
 		return new AntCliqueAlgorithm().compute(this);
 	}
 
@@ -4136,8 +3577,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return true if this graph is chordal, false otherwise.
 	 */
-	public boolean isChordal()
-	{
+	public boolean isChordal() {
 		return chordalAlgo.compute(this);
 	}
 
@@ -4146,14 +3586,11 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return a set containing all simplitial vertices.
 	 */
-	public IntSet getSimplicialVertices()
-	{
+	public IntSet getSimplicialVertices() {
 		IntSet s = new DefaultIntSet();
 
-		for (IntCursor c : getVertices())
-		{
-			if (isSimplicial(c.value))
-			{
+		for (IntCursor c : getVertices()) {
+			if (isSimplicial(c.value)) {
 				s.add(c.value);
 			}
 		}
@@ -4168,13 +3605,11 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * @param vertices
 	 *            a set of vertices to be colored (selected)
 	 */
-	public void highlightVertices(IntSet vertices)
-	{
+	public void highlightVertices(IntSet vertices) {
 		highlightVertices(vertices, consumeHighlightColor());
 	}
 
-	public void highlightEdges(IntSet edges)
-	{
+	public void highlightEdges(IntSet edges) {
 		highlightEdges(edges, consumeHighlightColor());
 	}
 
@@ -4184,8 +3619,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * @return A reference to a PDF file containing the report.
 	 * @throws IOException
 	 */
-	public RegularFile report() throws IOException
-	{
+	public RegularFile report() throws IOException {
 		Report report = new Report(this);
 		RegularFile pdfFile = report.computePDFReport();
 		return pdfFile;
@@ -4196,14 +3630,11 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return a set containing all source vertices.
 	 */
-	public IntSet getSources()
-	{
+	public IntSet getSources() {
 		IntSet r = new DefaultIntSet();
 
-		for (IntCursor c : getVertices())
-		{
-			if (isSource(c.value))
-			{
+		for (IntCursor c : getVertices()) {
+			if (isSource(c.value)) {
 				r.add(c.value);
 			}
 		}
@@ -4216,14 +3647,11 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return a set containing all sink vertices.
 	 */
-	public IntSet getSinks()
-	{
+	public IntSet getSinks() {
 		IntSet r = new DefaultIntSet();
 
-		for (IntCursor c : getVertices())
-		{
-			if (isSink(c.value))
-			{
+		for (IntCursor c : getVertices()) {
+			if (isSink(c.value)) {
 				r.add(c.value);
 			}
 		}
@@ -4231,57 +3659,48 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 		return r;
 	}
 
-	public int getNumberOfEdges()
-	{
-		return getNumberOfDirectedHyperEdges() + getNumberOfDirectedSimpleEdges() + getNumberOfUndirectedHyperEdges() + getNumberOfUndirectedSimpleEdges();
+	public int getNumberOfEdges() {
+		return getNumberOfDirectedHyperEdges() + getNumberOfDirectedSimpleEdges() + getNumberOfUndirectedHyperEdges()
+				+ getNumberOfUndirectedSimpleEdges();
 	}
 
-	public int getSize()
-	{
+	public int getSize() {
 		return getNumberOfEdges();
 	}
 
-	private static Object loadAlgorithm(String libname, String classname)
-	{
+	private static Object loadAlgorithm(String libname, String classname) {
 		// files older than 1 second are updated
 		long peremption = 1000L;
 
-		try
-		{
+		try {
 			String filename = libname + ".jar";
 			Directory localAlgoRepository = new Directory(Directory.getSystemTempDirectory(), "grph/algo");
 
-			if (!localAlgoRepository.exists())
-			{
+			if (!localAlgoRepository.exists()) {
 				localAlgoRepository.mkdirs();
 			}
 
 			RegularFile jarFile = new RegularFile(localAlgoRepository, filename);
 
 			// if the file does not yet exist or is too old
-			if (!jarFile.exists() || jarFile.getAgeMs() > peremption)
-			{
+			if (!jarFile.exists() || jarFile.getAgeMs() > peremption) {
 				String url = "http://www-sop.inria.fr/members/Luc.Hogie/grph/algo/" + libname + ".grphlib";
 
 				// re-download it, if possible
-				try
-				{
+				try {
 					byte[] jarBytes = NetUtilities.retrieveURLContent(url);
 					jarFile.setContent(jarBytes);
-				}
-				catch (Throwable ioe)
-				{
+				} catch (Throwable ioe) {
 					System.err.println("Unable to retrieve " + url);
 				}
 			}
 
 			// loads the JAR file
-			URLClassLoader child = new URLClassLoader(new URL[] { jarFile.toFile().toURL() }, ClassLoader.getSystemClassLoader());
+			URLClassLoader child = new URLClassLoader(new URL[] { jarFile.toFile().toURL() },
+					ClassLoader.getSystemClassLoader());
 			Class classToLoad = child.loadClass(classname);
 			return classToLoad.newInstance();
-		}
-		catch (Throwable t)
-		{
+		} catch (Throwable t) {
 			throw new IllegalStateException(t);
 		}
 	}
@@ -4291,8 +3710,7 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return true is this graph is bipartite, false otherwise.
 	 */
-	public boolean isBipartite()
-	{
+	public boolean isBipartite() {
 		// See the compute() method of the BipartenessAlgorithm class
 		return bipartiteAlgorithm.compute(this) != null;
 	}
@@ -4303,89 +3721,72 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * @param s
 	 *            a set of vertices in the graph
 	 */
-	public void clique(IntSet s)
-	{
+	public void clique(IntSet s) {
 		int[] a = s.toIntArray();
 
-		for (int i = 0; i < a.length; ++i)
-		{
-			for (int j = 0; j < i; ++j)
-			{
+		for (int i = 0; i < a.length; ++i) {
+			for (int j = 0; j < i; ++j) {
 				addUndirectedSimpleEdge(a[i], a[j]);
 			}
 		}
 	}
 
-	public void highlightVertices(Collection<IntSet> sets)
-	{
-		for (IntSet s : sets)
-		{
+	public void highlightVertices(Collection<IntSet> sets) {
+		for (IntSet s : sets) {
 			highlightVertices(s, consumeHighlightColor());
 		}
 	}
 
-	public IntArrayList bfsList(int sourceVertex)
-	{
+	public IntArrayList bfsList(int sourceVertex) {
 		final IntArrayList l = new IntArrayList();
 
-		new BFSAlgorithm().compute(this, sourceVertex, Grph.DIRECTION.out, new GraphSearchListener()
-		{
+		new BFSAlgorithm().compute(this, sourceVertex, Grph.DIRECTION.out, new GraphSearchListener() {
 
 			@Override
-			public DECISION vertexFound(int v)
-			{
+			public DECISION vertexFound(int v) {
 				l.add(v);
 				return DECISION.CONTINUE;
 			}
 
 			@Override
-			public void searchStarted()
-			{
+			public void searchStarted() {
 			}
 
 			@Override
-			public void searchCompleted()
-			{
+			public void searchCompleted() {
 			}
 		});
 
 		return l;
 	}
 
-	public AbstractStepper stepMonitor()
-	{
+	public AbstractStepper stepMonitor() {
 		// return new ConsoleStepper(this);
 		return new SwingStepper(this);
 	}
 
-	public void highlight(Collection<Cluster> clusters)
-	{
+	public void highlight(Collection<Cluster> clusters) {
 		highlight(clusters, true);
 	}
 
-	public void highlight(Collection<Cluster> clusters, boolean highlightClusterHeads)
-	{
+	public void highlight(Collection<Cluster> clusters, boolean highlightClusterHeads) {
 		int color = 1;
 
-		for (Cluster c : clusters)
-		{
+		for (Cluster c : clusters) {
 			highlightVertices(c, color++);
 
-			if (highlightClusterHeads)
-			{
+			if (highlightClusterHeads) {
 				getVertexShapeProperty().setValue(c.getHead(), 1);
 			}
 		}
 	}
 
-	public void highlightVertex(int v, int color)
-	{
+	public void highlightVertex(int v, int color) {
 		getVertexColorProperty().setValue(v, color);
 
 	}
 
-	public void displayImg()
-	{
+	public void displayImg() {
 		toGraphviz(COMMAND.fdp, OUTPUT_FORMAT.png).open();
 
 	}
@@ -4395,63 +3796,45 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return the vertex at the center of the graph.
 	 */
-	public int getCenter()
-	{
+	public int getCenter() {
 		return centerAlgorithm.compute(this);
 	}
 
-	public IntSet getVerticesAccessibleThrough(int vertex, int e)
-	{
+	public IntSet getVerticesAccessibleThrough(int vertex, int e) {
 		if (!getOutEdges(vertex).contains(e))
 			throw new IllegalArgumentException("edge " + e + " is not incident to vertex " + vertex);
 
 		IntSet r = new IntHashSet();
 
-		if (isUndirectedSimpleEdge(e))
-		{
+		if (isUndirectedSimpleEdge(e)) {
 			r.add(getTheOtherVertex(e, vertex));
-		}
-		else if (isDirectedSimpleEdge(e))
-		{
+		} else if (isDirectedSimpleEdge(e)) {
 			r.add(getDirectedSimpleEdgeHead(e));
-		}
-		else if (isUndirectedHyperEdge(e))
-		{
+		} else if (isUndirectedHyperEdge(e)) {
 			r.addAll(getUndirectedHyperEdgeVertices(e));
-		}
-		else if (isDirectedHyperEdge(e))
-		{
+		} else if (isDirectedHyperEdge(e)) {
 			r.addAll(getDirectedHyperEdgeHead(e));
 		}
 
 		return r;
 	}
 
-	public IntSet getVerticesAccessibleThrough(int sourceVertex, IntSet links)
-	{
+	public IntSet getVerticesAccessibleThrough(int sourceVertex, IntSet links) {
 		IntSet r = new IntHashSet();
 
-		for (IntCursor cl : links)
-		{
+		for (IntCursor cl : links) {
 			int e = cl.value;
 
 			if (!getOutEdges(sourceVertex).contains(e))
 				throw new IllegalArgumentException("edge " + e + " is not incident to vertex " + sourceVertex);
 
-			if (isUndirectedSimpleEdge(e))
-			{
+			if (isUndirectedSimpleEdge(e)) {
 				r.add(getTheOtherVertex(e, sourceVertex));
-			}
-			else if (isDirectedSimpleEdge(e))
-			{
+			} else if (isDirectedSimpleEdge(e)) {
 				r.add(getDirectedSimpleEdgeHead(e));
-			}
-			else if (isUndirectedHyperEdge(e))
-			{
+			} else if (isUndirectedHyperEdge(e)) {
 				r.addAll(getUndirectedHyperEdgeVertices(e));
-			}
-			else if (isDirectedHyperEdge(e))
-			{
+			} else if (isDirectedHyperEdge(e)) {
 				r.addAll(getDirectedHyperEdgeHead(e));
 			}
 		}
@@ -4459,12 +3842,9 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 		return r;
 	}
 
-	public boolean hasLoops()
-	{
-		for (int e : getEdges().toIntArray())
-		{
-			if (isLoop(e))
-			{
+	public boolean hasLoops() {
+		for (int e : getEdges().toIntArray()) {
+			if (isLoop(e)) {
 				return true;
 			}
 		}
@@ -4472,25 +3852,19 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 		return false;
 	}
 
-	public IntMap addGraph(Grph otherGraph)
-	{
+	public IntMap addGraph(Grph otherGraph) {
 		IntMap v_localV = new HPPCIntMap();
 
-		for (int v : otherGraph.getVertices().toIntArray())
-		{
+		for (int v : otherGraph.getVertices().toIntArray()) {
 			v_localV.put(v, addVertex());
 		}
 
-		for (int e : otherGraph.getEdges().toIntArray())
-		{
-			if (otherGraph.isUndirectedSimpleEdge(e))
-			{
+		for (int e : otherGraph.getEdges().toIntArray()) {
+			if (otherGraph.isUndirectedSimpleEdge(e)) {
 				int a = otherGraph.getOneVertex(e);
 				int b = otherGraph.getTheOtherVertex(e, a);
 				addUndirectedSimpleEdge(v_localV.get(a), v_localV.get(b));
-			}
-			else
-			{
+			} else {
 				throw new NotYetImplementedException();
 			}
 		}
@@ -4498,33 +3872,24 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 		return v_localV;
 	}
 
-	public void merge(Grph otherGraph)
-	{
+	public void merge(Grph otherGraph) {
 		// adds any vertices that are not already in
-		for (int v : otherGraph.getVertices().toIntArray())
-		{
-			if (!getVertices().contains(v))
-			{
+		for (int v : otherGraph.getVertices().toIntArray()) {
+			if (!getVertices().contains(v)) {
 				addVertex(v);
 			}
 		}
 
-		for (int e : otherGraph.getEdges().toIntArray())
-		{
-			if (otherGraph.isUndirectedSimpleEdge(e))
-			{
+		for (int e : otherGraph.getEdges().toIntArray()) {
+			if (otherGraph.isUndirectedSimpleEdge(e)) {
 				int a = otherGraph.getOneVertex(e);
 				int b = otherGraph.getTheOtherVertex(e, a);
 				addUndirectedSimpleEdge(a, b);
-			}
-			else if (otherGraph.isDirectedSimpleEdge(e))
-			{
+			} else if (otherGraph.isDirectedSimpleEdge(e)) {
 				int a = otherGraph.getOneVertex(e);
 				int b = otherGraph.getTheOtherVertex(e, a);
 				addDirectedSimpleEdge(a, b);
-			}
-			else
-			{
+			} else {
 				throw new NotYetImplementedException();
 			}
 		}
@@ -4536,26 +3901,19 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * @param b
 	 * @param allowMultipleEdges
 	 */
-	public void contractVertices(int a, int b)
-	{
+	public void contractVertices(int a, int b) {
 		contractVertices(a, b, false);
 	}
 
-	public void contractVertices(int a, int b, boolean allowMultipleEdges)
-	{
-		for (int e : getEdgesIncidentTo(a).toIntArray())
-		{
-			if (isUndirectedSimpleEdge(e))
-			{
+	public void contractVertices(int a, int b, boolean allowMultipleEdges) {
+		for (int e : getEdgesIncidentTo(a).toIntArray()) {
+			if (isUndirectedSimpleEdge(e)) {
 				int neighbour = getTheOtherVertex(e, a);
 
-				if (!areVerticesAdjacent(b, neighbour) || allowMultipleEdges)
-				{
+				if (!areVerticesAdjacent(b, neighbour) || allowMultipleEdges) {
 					addUndirectedSimpleEdge(b, neighbour);
 				}
-			}
-			else
-			{
+			} else {
 				throw new NotYetImplementedException();
 			}
 
@@ -4573,13 +3931,11 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * @throws IOException
 	 * @throws GraphBuildException
 	 */
-	public static Grph fromCaidaMap(RegularFile f) throws IOException, GraphBuildException, ParseException
-	{
+	public static Grph fromCaidaMap(RegularFile f) throws IOException, GraphBuildException, ParseException {
 		return new EdgeListReader().readGraph(f.getContent());
 	}
 
-	public void contractEdge(int e)
-	{
+	public void contractEdge(int e) {
 		if (!isSimpleEdge(e))
 			throw new IllegalArgumentException();
 
@@ -4588,51 +3944,40 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 		contractVertices(a, b);
 	}
 
-	public boolean areEdgesAdjacent(int a, int b)
-	{
+	public boolean areEdgesAdjacent(int a, int b) {
 		return !IntSets.difference(getVerticesIncidentToEdge(a), getVerticesIncidentToEdge(b)).isEmpty();
 	}
 
-	public static int getDefaultNumberOfThreads()
-	{
+	public static int getDefaultNumberOfThreads() {
 		return Runtime.getRuntime().availableProcessors() * 4;
 	}
 
-	public List<ArrayListPath> getKShortestPaths(int s, int t, int k, NumericalProperty edgeWeights)
-	{
+	public List<ArrayListPath> getKShortestPaths(int s, int t, int k, NumericalProperty edgeWeights) {
 		return new YenTopKShortestPathsAlgorithm().compute(this, s, t, k, edgeWeights);
 	}
 
-	public Collection<IntSet> getCliques()
-	{
+	public Collection<IntSet> getCliques() {
 		return new FindAllCliques().compute(this);
 	}
 
-	public void getCircleStar()
-	{
+	public void getCircleStar() {
 
-		for (int i = 1; i < getNumberOfVertices(); i++)
-		{
-			if (i == getNumberOfVertices() - 1)
-			{
+		for (int i = 1; i < getNumberOfVertices(); i++) {
+			if (i == getNumberOfVertices() - 1) {
 				addUndirectedSimpleEdge(i, 1);
 				addUndirectedSimpleEdge(i, 0);
-			}
-			else
-			{
+			} else {
 				addUndirectedSimpleEdge(i, i + 1);
 				addUndirectedSimpleEdge(i, 0);
 			}
 		}
 	}
 
-	public Grph toUndirectedGraph()
-	{
+	public Grph toUndirectedGraph() {
 		Grph g = Clazz.makeInstance(getClass());
 		g.getVertices().addAll(getVertices());
 
-		for (int e : getEdges().toIntArray())
-		{
+		for (int e : getEdges().toIntArray()) {
 			if (!isSimpleEdge(e))
 				throw new IllegalStateException("unsupported edge");
 
@@ -4644,121 +3989,99 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 		return g;
 	}
 
-	public String toString_elements()
-	{
-		return getVertices().size() + " vertices: " + getVertices() + "\n" + getEdges().size() + " edges: " + getEdges();
+	public String toString_elements() {
+		return getVertices().size() + " vertices: " + getVertices() + "\n" + getEdges().size() + " edges: "
+				+ getEdges();
 	}
 
-	private static void testCloneAndEquals()
-	{
+	private static void testCloneAndEquals() {
 		Grph g = ClassicalGraphs.PetersenGraph();
 		Grph h = g.clone();
 		UnitTests.ensure(g.equals(h));
 	}
 
-	public Property getVertexLabelProperty()
-	{
+	public Property getVertexLabelProperty() {
 		return verticesLabel;
 	}
 
-	public void setVerticesLabel(Property verticesLabel)
-	{
+	public void setVerticesLabel(Property verticesLabel) {
 		this.verticesLabel = verticesLabel;
 	}
 
-	public Property getEdgeLabelProperty()
-	{
+	public Property getEdgeLabelProperty() {
 		return edgesLabel;
 	}
 
-	public void setEdgesLabel(Property edgesLabel)
-	{
+	public void setEdgesLabel(Property edgesLabel) {
 		this.edgesLabel = edgesLabel;
 	}
 
-	public NumericalProperty getVertexColorProperty()
-	{
+	public NumericalProperty getVertexColorProperty() {
 		return verticesColor;
 	}
 
-	public void setVerticesColor(NumericalProperty verticesColor)
-	{
+	public void setVerticesColor(NumericalProperty verticesColor) {
 		this.verticesColor = verticesColor;
 	}
 
-	public NumericalProperty getEdgeColorProperty()
-	{
+	public NumericalProperty getEdgeColorProperty() {
 		return edgesColor;
 	}
 
-	public void setEdgesColor(NumericalProperty edgesColor)
-	{
+	public void setEdgesColor(NumericalProperty edgesColor) {
 		this.edgesColor = edgesColor;
 	}
 
-	public NumericalProperty getEdgeWidthProperty()
-	{
+	public NumericalProperty getEdgeWidthProperty() {
 		return edgesWidth;
 	}
 
-	public void setEdgesWidth(NumericalProperty edgesWidth)
-	{
+	public void setEdgesWidth(NumericalProperty edgesWidth) {
 		this.edgesWidth = edgesWidth;
 	}
 
-	public NumericalProperty getVertexSizeProperty()
-	{
+	public NumericalProperty getVertexSizeProperty() {
 		return verticesSize;
 	}
 
-	public void setVerticesSize(NumericalProperty verticesSize)
-	{
+	public void setVerticesSize(NumericalProperty verticesSize) {
 		this.verticesSize = verticesSize;
 	}
 
-	public NumericalProperty getVertexShapeProperty()
-	{
+	public NumericalProperty getVertexShapeProperty() {
 		return verticesShape;
 	}
 
-	public void setVerticesShape(NumericalProperty verticesShape)
-	{
+	public void setVerticesShape(NumericalProperty verticesShape) {
 		this.verticesShape = verticesShape;
 	}
 
-	public NumericalProperty getEdgeStyleProperty()
-	{
+	public NumericalProperty getEdgeStyleProperty() {
 		return edgesStyle;
 	}
 
-	public void setEdgesStyle(NumericalProperty edgesStyle)
-	{
+	public void setEdgesStyle(NumericalProperty edgesStyle) {
 		this.edgesStyle = edgesStyle;
 	}
 
-	public boolean isUndirectedSimpleEdge(int u, int v)
-	{
+	public boolean isUndirectedSimpleEdge(int u, int v) {
 		assert !storeEdges();
 		return getInOutOnlyElements(u).contains(v);
 	}
 
-	public boolean isDirectedSimpleEdge(int u, int v)
-	{
+	public boolean isDirectedSimpleEdge(int u, int v) {
 		assert !storeEdges();
 		return getOutOnlyElements(u).contains(v);
 	}
 
-	public IntSet getOppositeEdges(int e)
-	{
+	public IntSet getOppositeEdges(int e) {
 		IntSet r = new DefaultIntSet();
 		assert isDirectedSimpleEdge(e);
 		int tail = getDirectedSimpleEdgeTail(e);
 		int head = getDirectedSimpleEdgeHead(e);
 
-		for (int oe : getOutOnlyEdges(head).toIntArray())
-		{
-			if (getDirectedSimpleEdgeHead(oe) == tail)
-			{
+		for (int oe : getOutOnlyEdges(head).toIntArray()) {
+			if (getDirectedSimpleEdgeHead(oe) == tail) {
 				r.add(oe);
 			}
 		}
@@ -4766,25 +4089,19 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 		return r;
 	}
 
-	public SearchResult search(int v, NumericalProperty edgeWeights)
-	{
-		if (edgeWeights != null)
-		{
+	public SearchResult search(int v, NumericalProperty edgeWeights) {
+		if (edgeWeights != null) {
 			return new DijkstraAlgorithm(edgeWeights).compute(this, v);
-		}
-		else
-		{
+		} else {
 			return bfs(v);
 		}
 	}
 
-	public int getFartestVertex(final int v)
-	{
+	public int getFartestVertex(final int v) {
 		return getFartestVertex(v, null);
 	}
 
-	public int getFartestVertex(final int v, NumericalProperty edgeWeights)
-	{
+	public int getFartestVertex(final int v, NumericalProperty edgeWeights) {
 		return search(v, edgeWeights).farestVertex();
 	}
 
@@ -4793,15 +4110,13 @@ public abstract class Grph implements GrphPrimitives, Cloneable, Serializable
 	 * 
 	 * @return
 	 */
-	public GraphViewerRemote displayGraphstream_0_4_2()
-	{
+	public GraphViewerRemote displayGraphstream_0_4_2() {
 		// Utilities.displayInJFrame(toGraphStream_0_4_2_AWTComponent(),
 		// "Grph Graphstream v0.4.2 driver");
 		return toGraphStream_0_4_2_AWTComponent().displayInAFrame();
 	}
 
-	public GraphstreamBasedRenderer toGraphStream_0_4_2_AWTComponent()
-	{
+	public GraphstreamBasedRenderer toGraphStream_0_4_2_AWTComponent() {
 		return new GraphstreamBasedRenderer(this);
 	}
 }
